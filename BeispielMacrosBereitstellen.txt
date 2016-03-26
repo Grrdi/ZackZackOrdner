@@ -1,0 +1,7 @@
+kopiere untenstehende Dateien in den Ordner der via
+	Menue | Macro | Ordner oeffnen  
+aufgeht.
+
+SchreibtWeltInEdit3.txt
+Zeige Control-Infos vom aktiven Fenster an.txt
+Zeige Edit Zuordnung.txt

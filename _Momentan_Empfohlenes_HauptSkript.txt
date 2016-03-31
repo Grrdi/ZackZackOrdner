@@ -1,0 +1,13 @@
+Normalerweise ist
+	SchnellOrdner.ahk
+das immer gueltige empfohlene HauptSkript.
+In der momentanen UmstellungsPhase von "mit" auf "ohne" Timer wird
+trotz der noch fehlenden Anpassung der Hilfe die hoechste Version von
+	SchnellOrdner[###ohneTimer]
+empfohlen.
+Bis die Hilfe nachgezogen ist sollte
+	https://autohotkey.com/boards/viewtopic.php?f=10&t=15248
+als Ersatz dienen.
+Sowie die Hilfe nachgezogen ist wird wieder der Standart
+	SchnellOrdner.ahk
+gueltig und diese Datei verschwinden oder berichtigt.

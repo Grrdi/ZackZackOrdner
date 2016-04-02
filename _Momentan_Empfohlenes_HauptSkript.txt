@@ -10,6 +10,6 @@ Bis die Hilfe
 nachgezogen ist sollte
 	https://autohotkey.com/boards/viewtopic.php?f=10&t=15248
 als Ersatz dienen.
-Sowie die Hilfe nachgezogen ist wird wieder der Standart
+Sowie die Hilfe ausreichend nachgezogen ist wird wieder der Standart
 	SchnellOrdner.ahk
 gueltig und diese Datei verschwinden oder berichtigt.

@@ -1,0 +1,375 @@
+<html>
+<head>
+<title>ZackZackOrdner Hilfe</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h1> vorab zum anbeisen: <a href="#AusgesuchteMotivationsBeispiele">Ausgesuchte 
+  Motivations-Beispiele</a></h1>
+<h1><a href="#Hilfe">Hilfe-Inhalt</a></h1>
+<h3><a href="#Installation"><font size="+1">Installation</font></a> &nbsp; </h3>
+<h3><a href="#EinlesendesCaches">Einlesen des Caches</a> &nbsp; Alle Laufwerke 
+  einlesen <font size="+2"><a href="#AllJA"><font size="+1">JA</font></a> <font size="+1"><a href="#AllNein">Nein</a> 
+  <a href="#AllAbbruch">Abbruch</a></font></font></h3>
+<h3><a href="#Macro">Macro</a> &nbsp;<a href="#MacroStarten"><font size="-1">Macro 
+  Starten</font></a></h3>
+<h3><a href="#Favoriten">Favoriten</a> <a href="#FavPlus">+</a> <a href="#FavMinus">-</a> 
+  <a href="#AutoFavorit">auto</a> </h3>
+<h3><a href="#VorFiltern">Vor-Filtern</a> &nbsp; <a href="#Filtern">Filtern</a></h3>
+<h3>Buttons<br>
+  <a href="##Buttons"><img src="Buttons.jpg" width="381" height="20" border="0"></a> 
+  &nbsp; &nbsp;<a href="#ButtonOrdner"><img src="ButtonOrdner.jpg" width="33" height="18" border="0"></a></h3>
+<h3><a href="#ZackZackOrdnerminimiertoderimHintergrund">ZackZackOrdner minimiert 
+  oder im Hintergrund</a></h3>
+<h5><a href="#Ordnersuche"><font size="+1">Ordnersuche</font></a> &nbsp;<a href="#indenPfadennavigieren">in 
+  den Pfaden navigieren</a></h5>
+<h5><a href="#AusgesuchteMotivationsBeispiele"><font size="+1">Ausgesuchte Motivations-Beispiele</font></a> 
+  &nbsp; <a href="#PfadAendern"><br>
+  Ordner-Pfad eines bestehenden Explorer-Fensters &auml;ndern</a> &nbsp; <font color="#660000"><a href="#NeuesExplorerFensterWunschPfad">Neues 
+  Explorer-Fenster mit Wunsch-Pfad &ouml;ffnen</a></font>&nbsp; <a href="#ObjekteKopieren">Objekte 
+  eines bestehenden Explorer-Fensters kopieren</a> &nbsp; <a href="#SpeichernDialog">Bei 
+  Speichern (unter) Dialogen</a></h5>
+<h3><a href="#VollstaendigkeitderEdit5PfadFunde">Fundstellen-Qualit&auml;t</a></h3>
+<h1><a name="Hilfe"></a>Hilfe (Zwischenstand im Entstehen)</h1>
+<p>Einen Diskussionsstand und Tipps zu ZackZackOrdner sind im ForenBeitrag<br>
+  https://<a href="https://autohotkey.com/boards/viewtopic.php?f=10&t=15248">autohotkey.com/boards/viewtopic.php?f=10&amp;t=15248<br>
+  </a>nachlesbar. <a href="AutoHotKeyForumZackZackOrdner.jpg"><img src="AutoHotKeyForumZackZackOrdner.jpg" width="72" height="53" border="0"></a> 
+</p>
+<h1><a name="Installation"></a>Installation</h1>
+<p>Die aktuellsten ZackZackOrdner InstallationsDateien k&ouml;nnen hier<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://<a href="https://github.com/Grrdi/ZackZackOrdner/archive/master.zip">github.com/Grrdi/ZackZackOrdner/archive/master.zip<br>
+  </a>heruntergeladen werden. </p>
+<p>Den Ordner ZackZackOrdner-master <a href="DownloadZackZackOrdnerMaster.jpg"><img src="DownloadZackZackOrdnerMaster.jpg" width="64" height="23" border="0"></a>in 
+  das Wunschverzeichnis entpacken.</p>
+<p>Skript SchnellOrdner.ahk <a href="ScriptStart2.jpg"><img src="ScriptStart2.jpg" width="63" height="47" border="0"></a> 
+  starten.</p>
+<p>Container auf Anforderung <a href="KeinContainerGefunden.jpg"><img src="KeinContainerGefunden.jpg" width="46" height="24" border="0"></a> 
+  anlegen.</p>
+<p>Start-Pfad auf Anforderung anlegen. <img src="KeinStartPfadGefunden.jpg" width="471" height="218"></p>
+<p>Mit Ja werden alle Laufwerke mit Buchstaben Ihres PC's eingelesen. </p>
+<h2><a name="AllJA"></a>JA</h2>
+<p>AlleLaufwerke.awpf ausw&auml;hlen <img src="AlleLaufwerke2.jpg" width="619" height="306"> 
+  <br>
+  (Die Datei kann auch mit einem Editor bearbeitet werden, sie wurde soeben dynamisch 
+  erstellt.) <br>
+  und mit &ouml;ffnen absenden.</p>
+<h2><a name="Nein"></a>Nein</h2>
+<p>Laufwerke oder Pfade k&ouml;nnen manuell eingeben werden<br>
+  entweder in der aufgehenden Fileselect-Box <br>
+  oder nach Abbruch mit Escape <br>
+  durch Eingabe eines Pfades Schreibweise siehe unten.</p>
+<h2><a name="Abbrechen"></a>Abbrechen</h2>
+<p>sp&auml;ter erledigen (das Programm ist solange nutzlos)</p>
+<p>Ein Pfad wird mit \* beendet Beispiele:</p>
+<p>c:\*<br>
+  d:\*<br>
+  c:\Users\UserName\*<br>
+  \\ServerName\FreigabeName\Ordner\*</p>
+<h2><a name="EinlesendesCaches"></a>Einlesen des Caches</h2>
+<p>W&auml;hrend des Einlesens <a href="KurzNachDir2Paths.jpg"><img src="KurzNachDir2Paths.jpg" width="150" height="150" border="0"></a> 
+  k&ouml;nnen schon erste Suchen erfolgen. <br>
+  Die Fundstellen sind dann nat&uuml;rlich nicht vollst&auml;ndig. Jeder Start-Pfad 
+  wird mit einem End-Dialog<br>
+  <img src="FertigMeldungDir2Paths.jpg" width="406" height="263"> <br>
+  f&uuml;r ein paar Sekunden best&auml;tigt. Wenn <img src="GeKoOb.jpg" width="48" height="44">Dir2Paths.ahk 
+  nichtr mehr bei den ausgeblendeten Symbolen sichtbar ist,<br>
+  dann sind alle Start-Pfade eingelesen.</p>
+<h2><a name="Macro"></a>Macro</h2>
+<p>Die 1. Einlesezeit kann sinnvoll verwendet werden z.B. um die mitgelieferten 
+  Macros einzurichten.<br>
+  Dazu ist der Macro-Ordner zu &ouml;ffnen<br>
+  <img src="MenueMacroOrdnerOeffnen.jpg" width="510" height="219"><br>
+  um die 3 Dateien<br>
+  <img src="MacrosBereitstellen.jpg" width="634" height="266"> <br>
+  hinein kopieren zu k&ouml;nnen.</p>
+<h3><a name="MacroStarten"></a>Macro Starten</h3>
+<p><img src="MenueMacroStarten.jpg" width="464" height="170"><br>
+  Macro Datei ausw&auml;hlen<br>
+  <img src="ZeigeEditZuordnung.jpg" width="611" height="309"><br>
+  oeffnen f&uuml;hrt zur Anzeige der Edit#-Orte.<br>
+  <img src="EditZuordnungBeginner.jpg" width="512" height="512"> <br>
+  Diese Edit#-Felder Bezeichner werden im Hilfetext verwendet. D.h. statt im gro&szlig;en 
+  Feld in dem die Pfade angezeigt werden wird nur Edit5 verwendet.<br>
+  Die fehlenden Edit-Felder sind bis auf Edit9 erst im Fortgeschrittenen Modus 
+  <br>
+  <img src="MenueOptionenEinstellungen.jpg" width="551" height="172"><br>
+  bei Auswahl Nein<br>
+  <img src="DialogBeginnerFortgeschrittener.jpg" width="462" height="158"><br>
+  sichtbar.<br>
+  <img src="EditZuordnungFortgeschrittener.jpg" width="512" height="512"><br>
+  Edit9 ist momentan unbenutzt. <br>
+  Edit3 bleibt im Feld ausgew&auml;hlte Pfrad Nr nicht stehen, deshalb wurde es 
+  durchs Macro rechts davon im Edit5-Feld mit aufgenommen. </p>
+<h2><a name="Favoriten"></a>Favoriten </h2>
+<p>werden in ZackZackOrdner &auml;hnlich wie die Bewertungs-Sterne in Musiksammlungen 
+  angezeigt. <br>
+  Allerdings bewirkt hier ein Stern, <br>
+  zum einen das nach vorne rutschen bei der Sortierung<br>
+  und Pfade mit Stern(en) gehen auch als Kopieen ins Rennen<br>
+  (eine Kopie egal wieviele Sterne &gt; 0)</p>
+<h3><a name="FavPlus"></a>Favorit anlegen</h3>
+<h3><img src="FavoritPlus.jpg" width="512" height="334"></h3>
+eine Kopie mit vorangestelltem * wird oben in Edit5 eingef&uuml;gt <br>
+<img src="GesetzterFaforitenStern.jpg" width="512" height="333"> 
+<h3><a name="FavMinus"></a>Favorit entfernen oder schw&auml;chen</h3>
+<p><img src="FavoritMinus.jpg" width="508" height="332"> </p>
+<p>Ein Stern wird entfernt.</p>
+<p>Mit den ZackZack Favoriten kann man einige Suchen vermeiden bzw abk&uuml;rzen,<br>
+  weil die Favoriten nach oben sortiert werden.<br>
+  Man kann sich aber auch so etwas wie einen Verteiler zusammenstellen. </p>
+<p>Die Favoriten eines Containers landen alle in einem Cache-Ordner Namens <b><samp>!Fav</samp></b> 
+  . <br>
+  In einem Unterordner des sich &ouml;ffnenden Ordners bei <samp>Menue | Datei 
+  | Data Ordner oeffnen</samp> . </p>
+<h3><a name="AutoFavorit"></a>AutoFavorit</h3>
+<p>Voreingestellt erh&auml;lt jeder Ordner, der mit Button 2 oder 4 benutzt wird 
+  automatisch maximal einen Stern. <br>
+  Diese Einstellung ist im Menue ver&auml;nderbar <br>
+  0 -&gt; deaktiviert <br>
+  3 w&uuml;rde bedeuten, dass der Pfad nach 3 maliger Benutzung seinen maximalen 
+  Sterne-Wert erreicht hat. </p>
+<p>Manuelle Bewertungen haben keine Grenzen.</p>
+<h2><a name="Ordnersuche"></a>Ordnersuche</h2>
+<p>Der Suchstring wird einfach in Edit2 eigegeben.<br>
+  W&auml;hrend der Eingabe werden schon die passenden gefundenen Pfade in Edit5 
+  angezeigt. </p>
+<h3><a name="indenPfadennavigieren"></a>in den Pfaden navigieren</h3>
+<h4>Button Down</h4>
+<p>im Bild sanft blau <img src="SelectionDown.jpg" width="512" height="332"> selektiert 
+  ein Feld weiter unten.</p>
+<h4>Button Up</h4>
+<p>dito nur nach oben <img src="SelectionUp.jpg" width="511" height="330"></p>
+<h4>Alternativen</h4>
+<ul>
+  <li>man verwendet die {Up} <br>
+    oder die {Down} Taste <br>
+    bis die 7. Zeile selektiert ist</li>
+  <li>oder man Klickt ins Feld Edit3<br>
+    und schreibt 7 rein</li>
+  <li>oder {F3} Taste damit der Schreib-Focus ins Feld Edit3 wandert<br>
+    und schreibt 7 rein</li>
+  <li>oder man Klickt mit der rechten Maustaste auf die 7 (links von Edit5 und 
+    rechts unterhalb von Edit3)<br>
+    und w&auml;hlt im Kontextmen&uuml; <samp>Nur_Nr</samp></li>
+</ul>
+<h3><a name="VorFiltern"></a>Vor-Filtern</h3>
+<p>Ein positivger Integer-Wert im Feld Edit7 (im Bild die 3) ohne gesetzten Filter-Haken 
+  bewirkt, dass nur noch in einem Start-Pfad gesucht wird.<br>
+  Spezialfall: der Integer-Wert 1 aktiviert den Favoriten-Vor-Filter.</p>
+<h3><img src="VorFilter3.jpg" width="596" height="315"></h3>
+<p>Negative Integer-Werte f&uuml;hren zus Ausschluss des Start-Pfades bzw. bei 
+  -1 zum Ausschluss der Favoriten. </p>
+<p>Um herauszubekommen welcher Integer-Wert entspricht welchem Start-Pfad,<br>
+  ruft man Menue | Start-Pfad | Uebersicht auf.<br>
+  <a href="MenueStartPfadUbersicht.jpg"><img src="MenueStartPfadUbersicht.jpg" width="199" height="95" border="0"></a><br>
+  Im Folgenden Bild entspricht die Zeilennummer dem Integer-Wert des Vor-Filters<br>
+  <img src="AnzeigeStartPfadUebersicht.jpg" width="645" height="288"><br>
+  D.h. wenn man hier 3 als Vor-Filter w&auml;hlt k&ouml;nnte es nach Klick auf 
+  Button1 so wie im Bild unten aussehen: <br>
+  Nur Pfade die mit D:\ beginnen werden angezeigt<br>
+  <img src="VorFilter3EntprichtD.jpg" width="645" height="288"></p>
+<p>Hinweise: Die Vor-Filter machen die Suche durch weglassen schneller (ohne gesetzen 
+  Filter-Haken)<br>
+  Deutlich langsamer wird es mit gesetztem Haken.</p>
+<h3><a name="Filtern"></a>Filtern</h3>
+Hier wird, zus&auml;tzlich zur Ordner-Namen-Suche nach &quot;start&quot;, jeder 
+Pfad bevor er ins Feld Edit5 &uuml;bernommen wird, auf enthalten des Pfad-Filter-Wertes 
+&quot;UserName&quot; gepr&uuml;ft. 
+<h3><img src="FilterUndSuchBegriff.jpg" width="596" height="315"></h3>
+<p>dazu muss der Filter-Haken gesetzt sein. <br>
+  Da bei der gefilterten Suche auch noch der Interne Suchabbruch hochgesetzt werden 
+  muss, <br>
+  wirds mit gesetztem Haken deutlich langsamer.<br>
+  (Der Interne Suchabbruch erfolgt beim &Uuml;berschreiten der maximal durchsuchten 
+  Cache-Dateien.) </p>
+<h2><a name="Buttons"></a>Buttons</h2>
+<p><img src="Buttons.jpg" width="763" height="40"><br>
+  Button1 aktualisiert Edit5 und 8</p>
+<p>Button3 speichert Edit5 in das Clipboard</p>
+<p>Um mit dem in Edit8 stehenden Pfad etwas zu machen, dienen die Buttons 2, 4 
+  und 5 (von links nach rechts) (und eventuell die Benutzer definierbaren Buttons 
+  6 bis 10) sowie der Hauptmenue-Eintrag Edit8. <br>
+  Button2 gibt im wesentlichen Edit8 ins Eingabefeld des bspw. Speichern unter 
+  Dialoges zur&uuml;ck.<br>
+  Button4 &uuml;bergibt Edit8 einem Explorer-Fenster um darin den Edit8-Pfad zu 
+  &ouml;ffnen. Ob dazu ein neues Explorer-Fenster gestartet wird h&auml;ngt von 
+  der Historie ab.<br>
+  Button5 dient zum Kopieren zu dem Ziel-Pfad der in Edit8 steht.</p>
+<p>Mit {Enter} wird der Button bet&auml;tigt, der etwas st&auml;rker umrahmt ist. 
+  Welcher das ist h&auml;ngt wiederum von der Historie ab. ZackZackOrdner versucht 
+  diese Auswahl &uuml;ber die vorigen Schritte zu optimieren.</p>
+<h3><a name="ButtonOrdner"></a>Button Ordner <img src="ButtonOrdner.jpg" width="67" height="36"></h3>
+<p>Button Ordner &nbsp; der von ZackZackOrdner (TastWatch.ahk) k&uuml;nstlich 
+  &uuml;ber das aktive Explorer-Fenster gelegt wird, aktiviert bei Bet&auml;tigung 
+  das ZackZackOrdner-Fenster genau vor dem Explorer-Fenster, dem es spater den 
+  gew&auml;hlten Ordner mit Button4 zur&uuml;ckgeben m&ouml;chte.</p>
+<p>N&auml;heres zur gezielten Verwendung der Buttons folgt weiter unten.</p>
+<h2><a name="ZackZackOrdnerminimiertoderimHintergrund"></a>ZackZackOrdner minimiert 
+  oder im Hintergrund</h2>
+<p>Wenn ZackZackOrdner vom Benutzer eingerichtet ist, Dann kann man das Fenster 
+  beruhigt au&szlig;er Sichtweite bringen.<br>
+  Es dient dann meist nur sehr kurz um Ordner auszusuchen.</p>
+<h3>Schnell-Aktivierungen</h3>
+<p>Das ZackZackOrdner-Fenster kann mit folgenden Methoden schnell aktiviert werden:</p>
+<table border="1">
+  <tr> 
+    <td><b>Nutzer-Aktion</b></td>
+    <td><b>gew&uuml;nschtes Ereignis</b></td>
+    <td><b>Bemerkung</b></td>
+    <td><b>Zusammenarbeit mit</b></td>
+  </tr>
+  <tr> 
+    <td>#<font color="#0000FF" size="+1"><b>z</b></font></td>
+    <td>unver&auml;ndert aktivieren</td>
+    <td><b><font size="+1" color="#0000FF">z</font></b>ack-Aktivieren</td>
+    <td>kein Fremdfenster beteiligt</td>
+  </tr>
+  <tr> 
+    <td>Klick auf<br>
+      <img src="ButtonOrdner.jpg" width="67" height="36"></td>
+    <td>&uuml;berdeckend aktivieren</td>
+    <td>&nbsp;</td>
+    <td>mit Explorer</td>
+  </tr>
+  <tr> 
+    <td>#<font color="#0000FF" size="+1"><b>n</b></font></td>
+    <td>da<b><font size="+1" color="#0000FF">n</font></b>eben aktivieren</td>
+    <td>sofern der Platz reicht</td>
+    <td>mit Speichern-Unter etc.</td>
+  </tr>
+</table>
+<br>
+#<font color="#0000FF" size="+1"><b>n</b></font> ist die Tastenkombination [Fenster] 
++ [n]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#<font color="#0000FF" size="+1"><b>z</b></font> 
+ist ... [Fenster] + [z] 
+<h2><a name="AusgesuchteMotivationsBeispiele"></a>Ausgesuchte Motivations-Beispiele</h2>
+<p>ZackZackOrdner kann zu Beginn der Beispiel-Szenarien jeweils minimiert sein. 
+  <img align="RIGHT" alt="Fenster Beispiel" src="ZackZackFensterBeispiel.jpg"><br>
+  Der Cash (die Start-Pfade) muss eingelesen sein.</p>
+<h3><a name="PfadAendern"></a>Ordner-Pfad eines bestehenden Explorer-Fensters 
+  &auml;ndern<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ODER 
+  <br>
+  <a name="NeuesExplorerFensterWunschPfad"></a><font color="#660000">Neues Explorer-Fenster 
+  mit Wunsch-Pfad &ouml;ffnen.</font></h3>
+Hinweis: &uuml;ber jedem aktiven Explorer-Fenster erzeugt ZackZackOrdner <br>
+den n&auml;chsten rot geramten Button 
+<ol>
+  <li> 
+    <table bordercolor="#FF0000" bgcolor="#FF0000">
+      <tr> 
+        <td bgcolor="#FFFFFF" bordercolor="#FF0000" valign="top" align="center"><font color="#FF0000">klick</font><br>
+          <img src="ButtonOrdner.jpg" width="67" height="36"></td>
+      </tr>
+    </table>
+    -&gt; ZackZackOrdner setzt sich vor das bestehende Explorer-Fenster. &nbsp; 
+    &nbsp; ODER&nbsp; &nbsp; <font size="+6"> </font>
+    <table bordercolor="#FF0000" bgcolor="#FF0000">
+      <tr> 
+        <td bgcolor="#FFFFFF" bordercolor="#FF0000" valign="top" align="center"><font size="+6"><font color="#660000">#z</font></font> 
+        </td>
+      </tr>
+    </table>
+    <font size="+6"></font> ZackZackOrdner aktiviert sich </li>
+  <li>Eingabe im bereits fokusierten Feld <samp>Ordner-Namen-Suche</samp> einer 
+    Zeichenkette (<font color="#FF0000"><kbd>my</kbd></font>), die im gew&uuml;nschten 
+    Ziel-Ordner enthalten ist.</li>
+  <li>Bei mehren Fundstellen: Auswahl der Fundstelle &uuml;ber die Pfeiltasten 
+    oder (<font color="#FF0000"><kbd>F3</kbd> <font color="#000000">fokusiert</font></font>) 
+    das Feld <samp>ausgew&auml;hlte Pfad Nr.</samp> (<kbd><font color="#FF0000">3</font></kbd>)</li>
+  <li>R&uuml;ckgabe des Ordner-Pfades an das urspr&uuml;ngliche ODER <font color="#660000">an 
+    ein neues</font> Explorer-Fenster via . 
+    <table bordercolor="#FF0000" bgcolor="#FF0000">
+      <tr> 
+        <td bgcolor="#FFFFFF" bordercolor="#FF0000" valign="top" align="center"><font color="#FF0000">klick</font><br>
+          <b><font size="+1">Button4</font></b><br>
+          Explorer</td>
+      </tr>
+    </table>
+    <font color="#00CC00">Hinweis: <b>nur</b> die</font> <font color="#FF0000">roten 
+    Aktionen</font> <font color="#00CC00">waren im Fall 1 notwendig! Die Pfade 
+    werden ann&auml;hernd in Echtzeit sichtbar. Die gesamt ben&ouml;tigte Zeit 
+    d&uuml;rfte unter der Zeit liegen, die bei herk&ouml;mmlicher Bedienung f&uuml;r's 
+    hochhangeln ben&ouml;tigt wird. Das zeitaufw&auml;ndigere runterhangeln mit 
+    kurz Warten bei jedem Schritt wird rechnerisch komplet eingespaart. 2. und 
+    3. kann wenn der richtige Favorit besteht auch noch abgek&uuml;rzt werden. 
+    </font></li>
+</ol>
+<h3><a name="ObjekteKopieren"></a>Objekte eines bestehenden Explorer-Fensters 
+  kopieren </h3>
+  
+<ul>
+  <li>zu kopierende Objekte (Dateien / Ordner) selektierenund in die Zwischen-Ablage 
+    mit [STRG]+[c]</li>
+  <li><img src="ButtonOrdner.jpg" width="67" height="36"><br>
+    -&gt; ZackZackOrdner setzt sich vor das bestehende Explorer-Fenster.</li>
+  <li>Eingabe im Feld Ordner-Namen-Suche einer Zeichenkette, die im gew&uuml;nschten 
+    Ziel-Ordner enthalten ist.</li>
+  <li>Bei mehren Fundstellen: Auswahl der Fundstelle &uuml;ber die Pfeiltasten 
+    oder das Feld ausgew&auml;hlte Pfad Nr.</li>
+  <li>Kopieren der Objekte via <b><font size="+1">Button 5</font></b> Copy / MoveOptional: 
+    Ansehen der kopierten Objekte via Button 4 Explorer.</li>
+</ul>
+<h3><a name="SpeichernDialog"></a>Bei Speichern (unter) Dialogen</h3>
+  
+<ul>
+  <li>Ist der vorgew&auml;hlte Ordner des Speichern (unter) Dialogs nicht der 
+    gew&uuml;nschte Ziel-Ordner, dann:</li>
+  <li><font size="+2"><b>#n</b></font>&nbsp; um ZackZackOrdner zu aktivieren m&ouml;glichst 
+    ohne den Speichern (unter) Dialog zu verdecken. </li>
+  <li>Eingabe im Feld Ordner-Namen-Suche einer Zeichenkette, die im gew&uuml;nschten 
+    Ziel-Ordner enthalten ist.</li>
+  <li>Bei mehren Fundstellen: Auswahl der Fundstelle &uuml;ber die Pfeiltasten 
+    oder das Feld ausgew&auml;hlte Pfad Nr.</li>
+  <li>Kopieren des Ordner-Pfades in das Eingabefeld des Dateinamens via <b><font size="+1">Button 
+    2</font></b> Pfad und Dateiname<br>
+    &uuml;berpr&uuml;fen und gegebenenfalls erg&auml;nzen.[OK] im Speichern (unter) 
+    Dialog<br>
+  </li>
+</ul>
+<h2><a name="VollstaendigkeitderEdit5PfadFunde"></a>Vollst&auml;ndigkeit der Edit5 
+  Pfad-Funde</h2>
+<p>Standart-m&auml;&szlig;ig wird die Suche pro Start-Pfad nach 20 &uuml;bernommenen 
+  Cache-Dateien abgebrochen. <br>
+  Normalerweise kommt es zu diesem Abbruch bei Suchstringl&auml;ngen &gt; 4 nicht 
+  <br>
+  und die Pfad-Liste in Edit5 ist vollst&auml;ndig.<br>
+  Bei sehr kurzen Suchstrings z.B &quot;e&quot; kommt es ann&auml;hernd immer 
+  zu einer unvollst&auml;ndigen Pfad-Liste.<br>
+  Die angezeigten Pfade sind jedoch alle richtig und meist interessieren Funde 
+  mit 3-stelliger ZeilenzahlNummern eh nicht.<br>
+  Sie werden ohne &quot;Tricks&quot; auch nicht angezeigt (Klick in Edit5 und 
+  {PageDown} ist ein solcher &quot;Trick&quot;. der jedoch nicht unterst&uuml;tzt 
+  wird: Drag and Drop auf Edit5 sowie RechtsKlick auf die Nummern-Spalte links 
+  von Edit5 bleibt gleich wie wenn Edit5 unverschoben w&auml;re)<br>
+  Wenn jedoch jemand wissen m&ouml;chte, wieviele Ordner er hat, die mit einem 
+  e beginnen oder nur ein e enthalten oder diese Per Button3 herauslassen m&ouml;chte.<br>
+  Dann muss er die Fortgeschrittenen-Ansicht w&auml;hlen und Edit6 deutlich hochsetzen. 
+  <br>
+  Zus&auml;tzlich muss der Vorfilter -1 oder ein positiver Wert &gt; 1 verwendet 
+  werden um die Favoriten-Kopien wegzulassen.<br>
+  <b>Auf der ganz sicheren Seite ist man, wenn nach der Suche <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edit6 &gt;= Edit1<br>
+  </b><b>ist.</b> <br>
+  Hinweis: ein zu hoher Wert f&uuml;r Edit6 schadet beim &quot;Zwang auf Vollst&auml;ndigkeit&quot; 
+  nicht und kostet auch keine zusatzliche Rechenzeit, da am jeweiligen Cache-Ende 
+  eh aufgeh&ouml;rt wird.<br>
+  Was jedoch bei leerem Suchstring zum GeduldsSpiel werden kann. Wer jedoch so 
+  ZackZackOrdner verwendet, der wird denken er hat WarteWarteOrdner erwischt.<br>
+  Weiterhin kann unter diesen Vorbedingungen ab ca. einer halben Million gecachten 
+  Ordnern <br>
+  das hochsetzen von #MaxMem (maximaler Speicherplatz je Variable) von 64MB bspw. 
+  auf 256MB notwendig werden. <br>
+  Wenn dieser Fall auftritt, meldet AutoHotKey den Speichermangel.</p>
+<p>Falls der &quot;Zwang auf Vollst&auml;ndigkeit&quot; bei leeren bis kurzen 
+  Suchstrings real notwendig / sinnvoll f&uuml;r ZackZackOrdner f&uuml;r zackige 
+  Antworten ausreichend begr&uuml;ndet wird, steht daf&uuml;r eine Prinzip-L&ouml;sung 
+  (beim Autor dieses Skripts) zur Verf&uuml;gung. PS. diese Prinzip-L&ouml;sung 
+  erg&auml;nzt sich ideal mit der vorandenen L&ouml;sung, da sie bei kurzen Such-Strings 
+  besonders leistungsf&auml;hig ist.</p>
+<p>Geplant ist eine Anzeige, ob bei der letzten Suche abgebrochen wurde, also 
+  ob Pfade fehlen (k&ouml;nnten).<br>
+</p>
+</body>
+</html>

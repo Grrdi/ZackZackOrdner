@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h2>Suche</h2>
+<h3>Edit2</h3>
+<p>Das wichtigste Eingabe-Feld f&uuml;r die (Ordner)-Suche ist Edit2. Hier wird 
+  ein <b>Teil-String</b> des angestrebten (zu finden gew&uuml;nschten) Ordners 
+  eigegeben. Es handelt sich hier um eine sehr schnelle &quot;ist Teil-String 
+  im Ordner-Name enthalten Suche&quot;, die au&szlig;er einem *, der f&uuml;r 
+  einen Platzhalter f&uuml;r 0 bis mehrere Zeichen steht, wenig nennenswerte Eigenschaften 
+  hat. <font size="-1"><br>
+  Da die Suche programmintern die Suche des Betriebssystems nach Dateien missbraucht, 
+  gibt es doch Besonderheiten: Die im Teil-String enthaltene Zeichen </font></p>
+<ul>
+  <li><font size="-1">der Punkt .</font></li>
+  <li><font size="-1">die Tilde <b>~</b> </font></li>
+  <li><font size="-1">mehrere Sterne <b>*</b></font></li>
+</ul>
+<p><font size="-1">verhalten sich nicht immer erwartungsgem&auml;&szlig;. </font></p>
+<p>Die Anzahl der gefundenen Pfade in Edit1 steht in Klammern (meist bei kurzem 
+  Suchwort), wenn wegen gen&uuml;gend Fundstellen abgebrochen wurde.<br>
+  <font size="-2">Nicht zul&auml;ssig ist ein Suchabbruch im folgenden Fall, bei 
+  der Sortierung nach Anzahl der Buchstaben im Pfad.<br>
+  Ein Beispiel zur automatischen Umgehung des Suchabbruches findet sich bei den 
+  Macros SortierungKurzOben.txt.</font></p>
+<h3>Edit7</h3>
+<p>&Uuml;ber das <b>Pfad-Filter</b>-Feld kann die Suche eingeschr&auml;nkt werden 
+  auf:</p>
+<ol>
+  <li>komplette <b>Start-Pfade</b> durch Eingabe einer <b>Ganzzahl</b> ohne den 
+    Filter-Haken zu setzen.</li>
+  <li>in den Pfaden enthaltene <b>Teil-String</b>e (hierzu muss der Filter-Haken 
+    gesetzt sein)</li>
+</ol>
+<p>1. beschl&auml;unigt die Suche durch weglassen, 2. macht die Suche durch die 
+  vielen Einzel-Pfad-Suchen langsamer.</p>
+<p>Eine Besonderheit ist die Negierung des Pfad-Filters die technisch bedingt 
+  f&uuml;r Fall</p>
+<ol>
+  <li>ein Minus <font size="+2">-</font> vor der Ganzzahl</li>
+  <li>ein Anf&uuml;hrungs-Zeichen <font size="+2">&quot;</font> vor dem Teil-String</li>
+</ol>
+<p>erwartet.<br>
+  Beispiele: <br>
+  3&nbsp;&nbsp; -&gt;&nbsp;&nbsp; es wird nur im dritten Start-Pfad gesucht und 
+  gefunden. (Nr. siehe Menue: Start-Pfade | Uebersicht)<br>
+  -3&nbsp;&nbsp; -&gt;&nbsp;&nbsp; es wird in allen Start-Pfaden des Containers, 
+  au&szlig;er dem dritten, gefunden. <br>
+  Temporary&nbsp;&nbsp; -&gt;&nbsp;&nbsp; nur Fundstellen die Temporary enthalten 
+  kommen durch<br>
+  &quot;Temporary&nbsp;&nbsp; -&gt;&nbsp;&nbsp; es werden Fundstellen mit Temporary 
+  verworfen.<br>
+  Hinweise: Der Pfad ist der Komplett-Pfad mit Ordner- oder Dateiname.<br>
+  Das &Auml;ndern der Farbe in Edit7 gibt R&uuml;ckmeldung welcher Pfad-Filter 
+  gerade wirksam ist.</p>
+<p>Die suche nach Regul&auml;ren Ausdr&uuml;cken (Fortgeschrittenen-Ansicht) wird 
+  ohne Negierung unterst&uuml;tz, aber hier nur erw&auml;hnt.</p>
+<h2>Such-Tipps</h2>
+<p>Es wird empfohlen Explorer-Fenster und ZZO Fenster wenn &uuml;berhaupt nur 
+  kurzfristig maximiert zu verwenden.<br>
+  F&uuml;r Kopier-Aktionen sind oft 2 offene Fenster z.B. links Explorer rechts 
+  ZZO sinnvoll<br>
+  oder beidseitig Explorer, die ggf. mit ZZO ge&ouml;ffnet bzw. ver&auml;ndert 
+  wurden / noch werden.</p>
+<p></p>
+<h4>Explorer oder ZZO welches Werkzeug ist zu verwenden? </h4>
+<p>Jemand der sich eher die Speicher-Orte als die Speicher-Namen merkt. --&gt; 
+  Explorer<br>
+  Umgekehrt --&gt; ZZO<br>
+  Wenn Ordner-Namen oder Teile davon bekannt sind und der Ordner im Explorer nicht 
+  direkt erreichbar ist --&gt; ZZO<br>
+  Wenn Explorer offen und Wunschordner schnell erreichbar --&gt; Explorer<br>
+  Bei Suchen die sich mit Verwandschafts-Suchen umschreiben lassen (Vater-Ordner; 
+  Bruder-Ordner) --&gt; Explorer<br>
+  Bei vorhandenen Favoriten --&gt; ZZO<br>
+  Bei speichern in neu zu erstellendem Ordner --&gt; ZZO<br>
+  &Uuml;berblick verschaffen was gibts zum Teil-Begriff ... --&gt; ZZO<br>
+  &Uuml;berblick &uuml;ber Ordnerstruktur --&gt; Explorer<br>
+  Je komplexer die Ordnerstrukturen sind desto eher wird auch ZZO ben&ouml;tigt.<br>
+  Je komplexer die zu benutzenden Ordnerstrukturen sind desto eher wird auch ZZO 
+  ben&ouml;tigt. </p>
+<p>Nach einer kleinen Einarbeitungszeit merkt man schnell was womit besser geht.<br>
+  Oder man schwenkt mitten drin um, wenn man beispielsweise unter Verwendung von 
+  ZZO merkt wie viele Ordner von C:\* den Teilstring &quot;Win&quot; enthalten.</p>
+<p>Jedenfalls ist ZZO erg&auml;nzend und nicht ersetzend einzusetzen.</p>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<html>
+<head>
+<title>ZZO Speicher-Orte</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h2>Speicher-Orte</h2>
+<table border="1">
+  <tr> 
+    <td><b>von ZZO genutzte Basis-Ordner </b><font size="-1">(Stand Version 0.210)</font></td>
+    <td><b>UnterOrdner</b></td>
+    <td><b>UnterOrdner</b></td>
+    <td><b>UnterOrdner</b></td>
+    <td><b>Dateien</b></td>
+    <td><b>Zweck</b></td>
+    <td>Voraussetzung</td>
+  </tr>
+  <tr> 
+    <td><b>%A_ScriptDir%</b></td>
+    <td colspan="4" align="right">SchnellOrdner.ahk und die sonstigen von https://github.com/Grrdi/ZackZackOrdner/archive/master.zip 
+      heruntergeladenen Dateien</td>
+    <td align="left">Neu-Aufbau/Installation</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b></b></td>
+    <td>Hilfe</td>
+    <td colspan="3" align="right">Bilder.jpg Hilfe-Dateien.htm</td>
+    <td align="left">Zum Aufbau der Hilfe</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b>%A_AppData%\Zack</b></td>
+    <td colspan="4" align="right">Einstellungen.txt <font color="#666666"><br>
+      optional: AutoEinstellungen.txt</font></td>
+    <td align="left">zur Wiederhestellung eines Einstellungs-Zustandes</td>
+    <td align="left">Menue: Optionen | Sitzungs-Einst. speichern<br>
+      AutoEinstellungen.txt manuell erstellt</td>
+  </tr>
+  <tr> 
+    <td><b></b></td>
+    <td>Macro</td>
+    <td colspan="3" align="right">MacroNameDateien.txt</td>
+    <td align="left">Die Macros</td>
+    <td align="left">Menue: Macro | Muster-Dateien...</td>
+  </tr>
+  <tr> 
+    <td><b>%A_AppDataCommon%\Zack</b></td>
+    <td colspan="4" align="right">Dir2Paths.ahk IconDateien.ico TastWatch.ahk</td>
+    <td align="left">f&uuml;r die HilfsProgramme</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>ClsID</td>
+    <td colspan="2">Spezial-Ordner der Form: Name.{########-#####-#####-############}</td>
+    <td>-</td>
+    <td align="left">Spezial-Ordner z.B. Dieser PC</td>
+    <td align="left">Menue: Favoriten | Fav-Vorschlag generieren</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>TestUmgebung</td>
+    <td>Gelb Orange Gruen Blau Braun Schwarz</td>
+    <td>jeweils: Eins Zwei Drei Vier Fuenf Sechs</td>
+    <td>jeweils: FarbeVonLi_ZahlVonLi_1-bis-6.txt</td>
+    <td align="left">Dateien und Ordner der TestUmgebung</td>
+    <td align="left">Menue: Datei | TestUmgebung erzeugen</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><b>Container-Ordner</b></td>
+    <td><b>Start-Pfad-Ordner</b></td>
+    <td><b>Cache-Einzel-Dateien</b></td>
+    <td align="left">&nbsp;</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>WuCont</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td align="left">&nbsp;</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Haupt</td>
+    <td rowspan="5" valign="top">!Fav<br>
+      100_CacheDirName<br>
+      101_CacheDirName <br>
+      ... <br>
+      <br>
+    </td>
+    <td rowspan="5" valign="bottom"> 
+      <p>OrdnerName1.txt<br>
+        OrdnerName2.txt<br>
+        ... <br>
+        OrdnerName#.txt</p>
+    </td>
+    <td rowspan="5" align="left" valign="bottom">zum Aufbau des Caches</td>
+    <td align="left">mindest 1 Favorit angelegt</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td> 
+      <p><font color="#666666">ContainerName1</font></p>
+    </td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>TestUmgebung</td>
+    <td align="left">Menue: Datei | TestUmgebung erzeugen</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>weitere <font color="#999999">oder ein manuell erstellter Link auf einen 
+      (NetzLaufwerks-)Ordner <font color="#996666">a)</font></font></td>
+    <td align="left">Voraussetzung <font color="#996666">a)</font><font size="-1"> 
+      gedacht zur gemeinsamen Nutzung eines Caches f&uuml;r viele Nutzer des Netzlaufwerkes. 
+      Viel-User-Test noch nicht erfolgt.</font></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><font color="#666666">ContainerName#</font></td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>SuperFavoriten</td>
+    <td>!Fav</td>
+    <td>SuperFavoriten.txt</td>
+    <td align="left">Spezialfall SuperFavoriten</td>
+    <td align="left">Menue: Favoriten | SuperFavoriten bearbeiten</td>
+  </tr>
+</table>
+</body>
+</html>

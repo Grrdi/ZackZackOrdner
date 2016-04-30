@@ -7,3 +7,7 @@ Näheres siehe Hilfe-Datei:<br>
 SchnellOrdner.ahk.htm<br>
 und <br>
 https://autohotkey.com/boards/viewtopic.php?f=10&t=15248<br>
+
+
+PS. SchnellOrdner.ahk startet auch alleine ohne seine Ordner-Umgebung.
+Die Hilfe kann man dann jedoch vergessen.

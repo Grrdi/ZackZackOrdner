@@ -78,11 +78,8 @@
 <h2><a name="Macro"></a>Macro</h2>
 <p>Die 1. Einlesezeit kann sinnvoll verwendet werden z.B. um die mitgelieferten 
   Macros einzurichten.<br>
-  Dazu ist der Macro-Ordner zu &ouml;ffnen<br>
-  <img src="MenueMacroOrdnerOeffnen.jpg" width="510" height="219"><br>
-  um die 3 Dateien<br>
-  <img src="MacrosBereitstellen.jpg" width="634" height="266"> <br>
-  hinein kopieren zu k&ouml;nnen.</p>
+  Menue: Macro | Muster-Dateien ...<br>
+</p>
 <h3><a name="MacroStarten"></a>Macro Starten</h3>
 <p><img src="MenueMacroStarten.jpg" width="464" height="170"><br>
   Macro Datei ausw&auml;hlen<br>
@@ -124,12 +121,31 @@ eine Kopie mit vorangestelltem * wird oben in Edit5 eingef&uuml;gt <br>
   | Data Ordner oeffnen</samp> . </p>
 <h3><a name="AutoFavorit"></a>AutoFavorit</h3>
 <p>Voreingestellt erh&auml;lt jeder Ordner, der mit Button 2 oder 4 benutzt wird 
-  automatisch maximal einen Stern. <br>
+  automatisch <s>maximal einen</s> Stern. <br>
   Diese Einstellung ist im Menue ver&auml;nderbar <br>
-  0 -&gt; deaktiviert <br>
+  -1-&gt; deaktiviert <br>
   3 w&uuml;rde bedeuten, dass der Pfad nach 3 maliger Benutzung seinen maximalen 
-  Sterne-Wert erreicht hat. </p>
-<p>Manuelle Bewertungen haben keine Grenzen.</p>
+  Sterne-Wert erreicht hat.<br>
+  Die Grundeinstellung wurde auf AutoFavorit:=1 auf 0 ge&auml;ndert. D.h. AutoFavoriten 
+  werden zwar angelegt aber ohne Stern.<br>
+  Sie fallen jedoch nicht besonders auf. Ben&ouml;tigt werden sie, wenn von ZZO 
+  neue Ordner angelegt werden, dass nicht jedesmal der Start-Pfad neu eingelesen 
+  werden muss.<br>
+  Vermutlich wird noch so ge&auml;ndert, dass nur dann sternlose AutoFavoriten 
+  angelegt werden.<br>
+  Wer solange dauerhaft AutoFavorit:=-1 haben m&ouml;chte, kann eine Datei mit 
+  dem Inhalt<br>
+  <code>AutoFavoritVorher=0<br>
+  AutoFavorit=-1<br>
+  AutoFavoritAnzeigen</code> <br>
+  nach %A_AppData%\AutoEinstellungen.txt (bei Programmstart wird dieses Macro 
+  wenn vorhanden durchgef&uuml;hrt.) schreiben.<br>
+  (Dazu kann man: Menue: Optionen | Sitzungs-Einst. speichern gefolgt von Menue: 
+  Optionen | Sitzungs-Einst. bearbeiten. Inhalt l&ouml;schen, die 3 Zeilen rein 
+  und im selben Ordner unter AutoEinstellungen.txt speichern)<br>
+  Hier k&ouml;nnten auch andere (soeben gel&ouml;schte) Voreinstellungen eingetragen 
+  werden, nur muss es dann im Hinterkopf klingeln, wenn nach einem Update nichts 
+  mehr l&auml;uft, wenn z.B. die Voreistellung nicht mehr unterst&uuml;tzt wird.</p>
 <h2><a name="Ordnersuche"></a>Ordnersuche</h2>
 <p>Der Suchstring wird einfach in Edit2 eigegeben.<br>
   W&auml;hrend der Eingabe werden schon die passenden gefundenen Pfade in Edit5 

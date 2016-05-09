@@ -6,3 +6,4 @@ loeschen und
 nach
 	Button6.ahk
 umbenennen oder Button6 nicht verwenden.
+Button6 dient eh nur als Demo fuer eigene Verwendungen von Button6.

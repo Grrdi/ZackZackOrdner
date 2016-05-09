@@ -1,0 +1,8 @@
+Wer SchnellOrdnerNeuesteBeta.ahk verwendet
+sollte
+	Button6.ahk
+loeschen und
+	Button6[ZuSchnellOrdnerNeuesteBeta].ahk
+nach
+	Button6.ahk
+umbenennen oder Button6 nicht verwenden.

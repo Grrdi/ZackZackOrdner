@@ -7,7 +7,10 @@ IfExist %A_ScriptDir%\ZackZackOrdner-master
 	FileRemoveDir, %A_ScriptDir%\ZackZackOrdner-master,1 
 UrlDownloadToFile, %URL%, %DownLoadPfad%
 if ErrorLevel
-	MsgBox % DownLoadPfad
+{
+	MsgBox, 262160, Fehler beim Download, Beim Herunterladen ist ein Fehler aufgetreten.`nUrsache koennte sein`, dass dieses Skript nicht mit Ihrer Proxy-Umgebung zurecht kommt.`n`nAbbruch
+	ExitApp
+}
 IfExist %DownLoadPfad%
 {
 	ScriptDir:=A_ScriptDir

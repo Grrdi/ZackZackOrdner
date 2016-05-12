@@ -23,6 +23,8 @@ IfExist %DownLoadPfad%
 			FileDelete,%A_ScriptDir%\SchnellOrdner.ahk
 			; FileMove,%A_ScriptDir%\SchnellOrdner.ahk,%A_ScriptDir%\SchnellOrdnerOrg.ahk
 			FileMove,%A_ScriptDir%\ZackZackOrdner-master\SchnellOrdnerNeuesteBeta.ahk,%A_ScriptDir%\SchnellOrdner.ahk
+			IfExist %A_ScriptDir%\ZackZackOrdner-master\*[ZuSchnellOrdnerNeuesteBeta].*
+				MsgBox, 262208, Hinweis, Datei mit dem Muster`n	*[ZuSchnellOrdnerNeuesteBeta].*`nentdeckt.`nEventuell ist manuelle Nacharbeit erforderlich!
 		}
 		else
 		{

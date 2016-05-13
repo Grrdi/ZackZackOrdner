@@ -17,7 +17,7 @@ IfExist %DownLoadPfad%
 	Unz(DownLoadPfad,ScriptDir)
 	IfExist %A_ScriptDir%\ZackZackOrdner-master\SchnellOrdner.ahk
 		; FileCopy,%A_ScriptDir%\ZackZackOrdner-master\*.*,%A_ScriptDir%
-		RunWait, %ComSpec% /c ""XCopy" "%A_ScriptDir%\ZackZackOrdner-master\*.*" "%A_ScriptDir%"" /D /Y
+		RunWait, %ComSpec% /c ""XCopy" "%A_ScriptDir%\ZackZackOrdner-master\*.*" "%A_ScriptDir%"" /D /Y /S
 	IfExist %A_ScriptDir%\ZackZackOrdner-master\SchnellOrdnerNeuesteBeta.ahk
 	{
 		MsgBox, 262404, ZZO Beta, Beta-Version entdeckt`,`nsoll diese installiert werden?

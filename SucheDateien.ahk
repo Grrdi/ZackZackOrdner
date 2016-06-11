@@ -458,7 +458,7 @@ andere	letzten Ordner verwenden;  Mit : davor werden doppelte Dateien gesucht.
 HtmlTast1=
 (
 <h2>Schnell-Tasten</h2>
-<p>Nach Windows + Y wartet die Dateisuche auf einen Tastendruck (oder skript-abhängig mehrere Tastendrücke).
+<p>Nach F5 wartet die Dateisuche auf einen Tastendruck (oder skript-abhängig mehrere Tastendrücke).
 Erfolgt dieser wird das Skript Key-<i>Keyname</i>.do des Ordners %EigeneDateien%\SucheDateien aufgerufen.
 Für einige Tasten existieren Vorlagen:</p>
 <pre>

@@ -3730,6 +3730,13 @@ Loop
 			    sleep 500
                             ; If(XVersatzEintrag<>"")
                                 {
+									sleep 1000
+									If(BildSpalten>1)
+									{
+										send ^h
+									}
+									sleep 1000
+
                                 ; msgbox %XVersatzEintrag% , %YVersatzEintrag%
                                 WinMove, %FileName%, , %XVersatz%, %YVersatz% , %BildPixelX%, %BildPixelY%
 				; Warte:=5
@@ -3747,7 +3754,7 @@ Loop
 			    Warte:=FileSize/100000+50000
 				; TrayTip,Warte,%Warte%,5
 				; sleep 1000
-                            If(XVersatzEintrag<>"X0")
+                            ; If(XVersatzEintrag<>"X0")
                                 {
                                 ; msgbox %XVersatzEintrag% , %YVersatzEintrag%
                                 WinMove, %FileName%, , %XVersatz%, %YVersatz% , %BildPixelX%, %BildPixelY%
@@ -4235,7 +4242,7 @@ KurzfristigNochDrinnHalten:		; liegt braach, jedoch fehlt #############
                                 VlCWaitList=
 			    ; MsgBox % FileTyp
                             sleep 700
-			    SplashImage, Off
+				SplashImage, Off
 			    ; WinWait,%VlcWaitClose%,,5
 			    ; WinWaitActive ,%VlcWaitClose%,,20
                             WinSet, Bottom,, ahk_class ShImgVw:CPreviewWnd

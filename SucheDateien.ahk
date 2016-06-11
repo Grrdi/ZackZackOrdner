@@ -260,9 +260,9 @@ Man sollte allerdings genau wissen was man macht, denn es erfolgt keine Sicherhe
     <td>ButtonClear<br>
       CheckboxSub=1<br>
       CheckboxTypen=0<br>
-      \\Sstr102f\estr_shr002\ESTR_G00113\10_Work\10_BEVIS<br>
-      \\Sstr102f\estr_shr002\ESTR_G00113\40_HP\HomePage\BEVIS<br>
-      F:\4T_FinanceContracts<br>
+      C:\Users\Gerd\Eigene Dateien<br>
+      \\Server\Freigabe<br>
+      F:<br>
       CheckboxOhneIcon=1<br>
       Checkbox1=1<br>
       Checkbox2=1<br>

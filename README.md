@@ -1,5 +1,5 @@
 # ZackZackOrdner
-Ordner schnell Auswahl.
+Ordner schnell Auswahl. / Get Folders On The Quick.
 
 https://github.com/Grrdi/ZackZackOrdner/archive/master.zip entpacken<br>
 und SchnellOrdner.ahk mit AutoHotkey Version 1. Hoechste starten<br>

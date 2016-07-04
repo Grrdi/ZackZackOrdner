@@ -15,3 +15,5 @@ Die Hilfe kann man dann jedoch vergessen.
 Installations-Alternative: AktualisiereZackZackOrdner.ahk starten (nicht bei allen Proxy-Umgebungen verfuegbar).
 
 Install: run AktualisiereZackZackOrdner.ahk (Download; Install; First-Run of Program)
+
+https://youtu.be/tN214pjN6aA

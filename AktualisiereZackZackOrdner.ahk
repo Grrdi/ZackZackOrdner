@@ -1,15 +1,25 @@
 ; dieses Script installiert oder aktualisiert ZZO in das hier verwendete Verzeichnis und startet es.
 url=https://github.com/Grrdi/ZackZackOrdner/archive/master.zip
 DownLoadPfad=%A_ScriptDir%\ZackZackOrdner-master.zip
+DownLoadOrdner=%A_ScriptDir%\ZackZackOrdner-master
 IfExist %DownLoadPfad%
 	FileDelete,%DownLoadPfad%
-IfExist %A_ScriptDir%\ZackZackOrdner-master
-	FileRemoveDir, %A_ScriptDir%\ZackZackOrdner-master,1 
+IfExist %DownLoadOrdner%
+	FileRemoveDir, %DownLoadOrdner%,1 
 UrlDownloadToFile, %URL%, %DownLoadPfad%
 if ErrorLevel
 {
-	MsgBox, 262160, Fehler beim Download, Beim Herunterladen ist ein Fehler aufgetreten.`nUrsache koennte sein`, dass dieses Skript nicht mit Ihrer Proxy-Umgebung zurecht kommt.`n`nAbbruch
-	ExitApp
+	Clipboard:=DownLoadPfad
+	FileCreateDir,%DownLoadOrdner%
+	Run %url%
+	MsgBox, 262196, Fehler beim Automatischen Download., Der Download wurde fuer die manuelle Weiterverabeitung gestartet. Dieser ist unter %DownLoadPfad% zu speichern.`n`nErst wenn erledigt Ja klicken!`n`nHinweis: Der DownLoadPfad befindet sich  im Clipboard.
+	IfMsgBox,No
+		ExitApp
+	IfNotExist %DownLoadPfad%
+	{
+		MsgBox, 262160, Fehler beim Download, Beim Herunterladen ist ein Fehler aufgetreten.`nUrsache koennte sein`, dass Kein Netwerk vorhanden oder dieses Skript nicht mit Ihrer Proxy-Umgebung zurecht kommt.`n`nAbbruch
+		ExitApp
+	}
 }
 IfExist %DownLoadPfad%
 {
@@ -34,6 +44,11 @@ IfExist %DownLoadPfad%
 			FileDelete,%A_ScriptDir%\SchnellOrdner.ahk
 			FileMove,%A_ScriptDir%\ZackZackOrdner-master\SchnellOrdner.ahk,%A_ScriptDir%\SchnellOrdner.ahk
 		}
+	}
+	IfExist %A_ScriptDir%\SchnellOrdner.exe
+	{
+		run %A_ScriptDir%\SchnellOrdner.exe		; auskommentieren, wenn nicht gleich gestartet werden soll 
+		ExitApp
 	}
 	IfExist %A_ScriptDir%\SchnellOrdner.ahk
 		run %A_ScriptDir%\SchnellOrdner.ahk		; auskommentieren, wenn nicht gleich gestartet werden soll 

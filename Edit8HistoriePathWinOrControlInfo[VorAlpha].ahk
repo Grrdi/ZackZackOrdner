@@ -1,3 +1,4 @@
+; Version 0.05
 ; Das Skript liefert Informationen zu Ausgewählten Objekten.
 ; Es ist bisher nur ein machbarkeits Test und es soll das Look and Feeling unterstützen.
 ; Bisher rudimentär implementiert:
@@ -614,6 +615,16 @@ SubLV:  ; https://autohotkey.com/board/topic/80265-solved-which-column-is-clicke
 			; outline("green")
             return
         }
+		else if (Column=3)
+        {
+			IfWinExist,ZackZack ahk_class AutoHotkeyGUI
+			{
+				ControlSetText,Edit4,SelfActivate.,ZackZack
+				sleep 200
+				StringSplit,Spalte,Row,%A_Tab%
+				SetSuchRelevanteVarsVonZzo(Spalte1)
+			}
+		}
         else if (Column=6)
         {
             LV_GetText(ThisPID, Row , 4)
@@ -860,12 +871,9 @@ if (StrLen(Row>20))
 {
 	if(Column<>0)	; Bedienung Maus uebers Feld und dort lassen.  Menu | Zeilen Text 2 Clip.  via Tastatur auswaehlen.
 	{
-		; StringSplit,Spalte,Row,%A_Tab%
-		; Clipboard:=Spalte%Column%
 		StringSplit,Spalte,Row,%A_Tab%
-		SetSuchRelevanteVarsVonZzo(Spalte1)
-		; ToolTip,% Spalte1
-		; Clipboard:=Spalte%Column%
+		; SetSuchRelevanteVarsVonZzo(Spalte1) ; umgezogen nach Linksklick auf Spalte 3
+		Clipboard:=Spalte%Column%				; Einzelfeld ins Clipboard
 	}
 	else
 		Clipboard:=Row		; wiso?
@@ -1492,7 +1500,7 @@ GetSuchRelevanteVarsVonZzo(ZzoEdit8="")
 {
 	global
 	ControlGetText,Zzo%PfadAngekommenZaehler%Edit8,Edit8,ZackZack
-	if(ZzoEdit8<>"" and ZzoEdit8<>Zzo%PfadAngekommenZaehler%Edit8)
+	if(ZzoEdit8<>"" and ZzoEdit8<>Zzo%PfadAngekommenZaehler%Edit8 and ZzoEdit8<>Zzo%GemerkterPfadAngekommenZaehler%Edit8)
 	{
 		SuchVars%PfadAngekommenZaehler%Gueltig:=false
 		return 0
@@ -1502,7 +1510,19 @@ GetSuchRelevanteVarsVonZzo(ZzoEdit8="")
 	ControlGetText,Zzo%PfadAngekommenZaehler%Edit2,Edit2,ZackZack
 	ControlGetText,Zzo%PfadAngekommenZaehler%Edit3,Edit3,ZackZack
 	ControlGetText,Zzo%PfadAngekommenZaehler%Edit7,Edit7,ZackZack
-
+	ControlGetText,Zzo%PfadAngekommenZaehler%Button1,Button11,ZackZack
+	DotPos:=InStr(Zzo%PfadAngekommenZaehler%Button1,".")
+	KlammerZuPos:=InStr(Zzo%PfadAngekommenZaehler%Button1,"]")
+	Zzo%PfadAngekommenZaehler%Button1:=SubStr(Zzo%PfadAngekommenZaehler%Button1,DotPos+1,KlammerZuPos-DotPos-1)
+	; ControlGet,ZzoSuFi,Checked,,HwndCheckE0,ZackZack
+	ControlGet,Zzo%PfadAngekommenZaehler%SuFi,Checked,,Button4,ZackZack	;OK
+	
+	TempRueck:="AktContainerNr:=?"
+	ControlSetText,Edit4,%TempRueck%.,ZackZack
+	sleep 800
+	ControlGetText,Zzo%PfadAngekommenZaehler%AktHauptContainerNr,Edit4,ZackZack
+	; ControlGet,ZzoSuFi,Checked,,SuFi,ZackZack
+	; ToolTip,% "ZzoSuFi= " Zzo%PfadAngekommenZaehler%SuFi
 	return 1
 }
 SetSuchRelevanteVarsVonZzo(GemerkterPfadAngekommenZaehler)
@@ -1511,15 +1531,55 @@ SetSuchRelevanteVarsVonZzo(GemerkterPfadAngekommenZaehler)
 	; ToolTip % GemerkterPfadAngekommenZaehler
 	if(SuchVars%GemerkterPfadAngekommenZaehler%Gueltig)
 	{
+		Loop, 8
+		{
+			TempRueck:="AktContainerNr:=?"
+			; sleep 400
+			ControlSetText,Edit4,%TempRueck%.,ZackZack
+			sleep 600
+			ControlGetText,Zzo%PfadAngekommenZaehler%IstAktHauptContainerNr,Edit4,ZackZack
+			; MsgBox % "if(" Zzo%PfadAngekommenZaehler%IstAktHauptContainerNr ">" Zzo%GemerkterPfadAngekommenZaehler%AktHauptContainerNr ")"
+			sleep 600
+			if Zzo%PfadAngekommenZaehler%IstAktHauptContainerNr is not Integer
+			{
+				MsgBox die aktuelle ContainerNr. konnte nicht gelesen werden! 
+				break
+			}
+			else if Zzo%GemerkterPfadAngekommenZaehler%AktHauptContainerNr is not Integer
+			{
+				MsgBox die gespeicherte ContainerNr. konnte nicht gelesen werden! 
+				break
+			}
+			else if(Zzo%PfadAngekommenZaehler%IstAktHauptContainerNr > Zzo%GemerkterPfadAngekommenZaehler%AktHauptContainerNr)
+			{
+				ControlSetText,Edit4,ContainerPrev.,ZackZack
+				sleep 800
+			}
+			else if(Zzo%PfadAngekommenZaehler%IstAktHauptContainerNr = Zzo%GemerkterPfadAngekommenZaehler%AktHauptContainerNr)
+				break
+			else
+			{
+				ControlSetText,Edit4,ContainerNext.,ZackZack
+				sleep 800
+			}
+			
+		}
+		
+		sleep 100
+		if(Zzo%GemerkterPfadAngekommenZaehler%SuFi)
+			Control,Check,,Button4,ZackZack
+		else
+			Control,UnCheck,,Button4,ZackZack
+		sleep 500
+		TempRueck:=Zzo%GemerkterPfadAngekommenZaehler%Edit7
+		sleep 100
+		ControlSetText,Edit4,E7%TempRueck%.,ZackZack
 		TempRueck:=Zzo%GemerkterPfadAngekommenZaehler%Edit2
 		ControlSetText,Edit4,E2%TempRueck%.,ZackZack
-
+		sleep 1000
 		TempRueck:=Zzo%GemerkterPfadAngekommenZaehler%Edit3
 		ControlSetText,Edit4,E3%TempRueck%.,ZackZack
-		sleep 1000
-		TempRueck:=Zzo%GemerkterPfadAngekommenZaehler%Edit7
-		ControlSetText,Edit4,E7%TempRueck%.,ZackZack
-
+		
 ; MsgBox % GemerkterPfadAngekommenZaehler "	" TempRueck
 		
 		; TempRueck:=Zzo%PfadAngekommenZaehler%Edit3

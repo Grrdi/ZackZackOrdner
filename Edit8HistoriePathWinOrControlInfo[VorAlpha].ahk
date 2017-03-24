@@ -1,4 +1,4 @@
-; Version 0.05
+; Version 0.06
 ; Das Skript liefert Informationen zu Ausgewählten Objekten.
 ; Es ist bisher nur ein machbarkeits Test und es soll das Look and Feeling unterstützen.
 ; Bisher rudimentär implementiert:
@@ -10,8 +10,10 @@
 ; für 3) ist das ControlHWND als Parameter zu übergeben oder in 2) auf einen Spalteneintrag ganz links zu klicken
 ; ausgewählte Controls (die Pfade noch nicht) lassen sich auch manipulieren, durch editieren der Werte bzw. durch Rechtsklick auf die Reihe. Bei meinen Test ist nichts passiert, aber es ist durch aus denkbar, dass das Ändern von Controls zu Programmabstürzen führen kann. Schlimmeres ist nicht auszuschließen.
 ; In der Betriebsart 1) mit vorgestartetem ZZO werden die Edit8-Ausgaben von ZZO historisiert.
-; Pro neuer Ausgabe nach 1 Sekunde idle-Time wird automatisch der Pfad übernommen.
+; Pro neuer Ausgabe nach 1 bis 2 Sekunden idle-Time wird automatisch der Pfad übernommen.
 ; Mit der Tastenkombination #< können weitere Pfade übernommen werden.
+; Mit Klick auf die 3. Spalte kann der Wert wieder nach ZZO zurückgeschrieben werden.
+; Zu letzterem sollte das ZZO-Fenster geoeffnet also nicht minimiert sein.
 ; Hinweise: 
 ; ZZO lässt sich dazu nur das Edit8-Feld auslesen, alle Informationen besorgt momentan dieses Skript.
 ; Das ändert sich voraussichlich (in Arbeit) wenn die Sucheinstellungen, die zum Inhalt von Edit8 führen, mit Historisiert werden.
@@ -441,6 +443,11 @@ Menu, MeinMenü, Add, Zeilen Text 2 Clip.,Zeile2Clip
 Menu, MeinMenü, Add  ; Fügt eine Trennlinie unterhalb des Untermenüs ein.
 Menu, MeinMenü, Add, Reload Skript nur Fenster, SkriptReload  ; Fügt einen weiteren Menüpunkt unterhalb des Untermenüs ein.
 Menu, MeinMenü, Add, Reload Skript +Prozesse, SkriptProzessReload  ; Fügt einen weiteren Menüpunkt unterhalb des Untermenüs ein.
+if ZzoExist
+{
+	ControlSetText,Edit4,SelfActivate.,ZackZack
+	sleep 1000
+}
 Loop
 {
 	; MsgBox im loop
@@ -1519,8 +1526,17 @@ GetSuchRelevanteVarsVonZzo(ZzoEdit8="")
 	
 	TempRueck:="AktContainerNr:=?"
 	ControlSetText,Edit4,%TempRueck%.,ZackZack
-	sleep 800
+	if(WarteRueck="")
+		WarteRueck:=8
+		WarteRueck100:=WarteRueck*100
+	sleep % WarteRueck100
 	ControlGetText,Zzo%PfadAngekommenZaehler%AktHauptContainerNr,Edit4,ZackZack
+	if(Zzo%PfadAngekommenZaehler%AktHauptContainerNr="")
+	{
+		if(WarteRueck<20)
+			++WarteRueck
+		WarteRueck100:=WarteRueck*100
+	}
 	; ControlGet,ZzoSuFi,Checked,,SuFi,ZackZack
 	; ToolTip,% "ZzoSuFi= " Zzo%PfadAngekommenZaehler%SuFi
 	return 1
@@ -1536,13 +1552,16 @@ SetSuchRelevanteVarsVonZzo(GemerkterPfadAngekommenZaehler)
 			TempRueck:="AktContainerNr:=?"
 			; sleep 400
 			ControlSetText,Edit4,%TempRueck%.,ZackZack
-			sleep 600
+			sleep % WarteRueck100
 			ControlGetText,Zzo%PfadAngekommenZaehler%IstAktHauptContainerNr,Edit4,ZackZack
 			; MsgBox % "if(" Zzo%PfadAngekommenZaehler%IstAktHauptContainerNr ">" Zzo%GemerkterPfadAngekommenZaehler%AktHauptContainerNr ")"
-			sleep 600
+			sleep % WarteRueck100
 			if Zzo%PfadAngekommenZaehler%IstAktHauptContainerNr is not Integer
 			{
-				MsgBox die aktuelle ContainerNr. konnte nicht gelesen werden! 
+				++WarteRueck
+				WarteRueck100:=WarteRueck*100
+
+				MsgBox die aktuelle ContainerNr. konnte nicht gelesen werden! `nDie Wartezeit [%WarteRueck100% in ms] wurde hochgesetzt.
 				break
 			}
 			else if Zzo%GemerkterPfadAngekommenZaehler%AktHauptContainerNr is not Integer
@@ -1553,14 +1572,14 @@ SetSuchRelevanteVarsVonZzo(GemerkterPfadAngekommenZaehler)
 			else if(Zzo%PfadAngekommenZaehler%IstAktHauptContainerNr > Zzo%GemerkterPfadAngekommenZaehler%AktHauptContainerNr)
 			{
 				ControlSetText,Edit4,ContainerPrev.,ZackZack
-				sleep 800
+				sleep % WarteRueck100
 			}
 			else if(Zzo%PfadAngekommenZaehler%IstAktHauptContainerNr = Zzo%GemerkterPfadAngekommenZaehler%AktHauptContainerNr)
 				break
 			else
 			{
 				ControlSetText,Edit4,ContainerNext.,ZackZack
-				sleep 800
+				sleep % WarteRueck100
 			}
 			
 		}

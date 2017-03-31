@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h2>Quelltexte</h2>
+<p>Ein Quelltext ist in ZZO (ZackZackOrdner) erst einmal nur ein Text der mit 
+  Zeilenummern angezeigt wird.</p>
+<p>&Uuml;ber diese Zeilennummer kann einem Fremd-Editor jedoch mitgeteilt werden, 
+  wo gerade der Fokus erwartet wird.</p>
+<h3>Quelltext-Modus</h3>
+<p>Der Quelltext-Modus kann &uuml;ber verschiedene Wege erreicht werden:</p>
+<ol>
+  <li>Menu | ? | Quelltext anzeigen --&gt; &ouml;ffnet den Quelltext von ZZO</li>
+  <li>Menu | ? | Hotkeys anzeigen --&gt; &ouml;ffnet den Quelltext von ZZO mit 
+    dem Filter ::</li>
+  <li>Navigieren zu einem geeigneten Text &nbsp; Menu | Edit8 | Edit8 als Quelltext 
+    &ouml;ffnen</li>
+  <li>in Edit10 (unteres Feld) <samp>Qelltext</samp> eingeben und vom Explorer 
+    eine geeignete Datei per Drag and Drop darauf ziehen.</li>
+  <li>oder manuel bzw. via Macro die Eintragung in Edit2 vornehmen, so wie sie 
+    beispielweise bei 1. bis 4. entstanden sind.</li>
+</ol>
+<h4>Einf&uuml;hrendes Beispiel</h4>
+<ul>
+  <li>Menu | ? | Quelltext anzeigen</li>
+  <li>in Edit2 ganz rechts zwei Doppelpunkte einfuegen. (Man erh&auml;lt das gleiche 
+    Ergebnis wie oben unter 2.)</li>
+  <li>Doppel-Klick auf die Zeile mit (Clipboard-) Menue. (momentan die 2. Zeile)<br>
+    nun sollte sich der Fremd-Editor Scite4AutoHotKey an der entsprechenden Zeilennummer 
+    mit markiertem :: &ouml;ffnen. Z.B.:<br>
+    <table>
+      <tr> 
+        <td><samp>#</samp></td>
+        <td bgcolor="#CCCCCC"><samp>::</samp></td>
+        <td><samp> ; (Clipboard-) Menue</samp></td>
+      </tr>
+    </table>
+  </li>
+  <li>nach dem Kommentar-Zeichen ; bitte &quot;oeffnet das&quot; in Scite einfuegen.</li>
+  <li>Datei speichern in Scite</li>
+  <li>ZZO mit #z ([Win]+[z] Tastenkombination) aktivieren </li>
+  <li>und mit F5 aktualisieren<br>
+    nun sollte die Zeile in ZZO etwa folgenderma&szlig;en ausehen<br>
+    <samp>911~~~~~~~#v:: ; oeffnet das (Clipboard-) Menue</samp><br>
+    bzw inScite<br>
+    <table>
+      <tr> 
+        <td bgcolor="#FFFF00"><samp>#</samp><samp>::</samp><samp> ; oeffnet das 
+          (Clipboard-) Menue</samp></td>
+      </tr>
+    </table>
+    <br>
+  </li>
+</ul>
+<h3>Quelltext filtern</h3>
+<p>Im Einf&uuml;hrenden Beispiel wurden zwei Doppelpunkte eingegeben. Hier kann 
+  beliebiger Text eingegeben werden und es werden nur noch Zeilen angezeigt, die 
+  diesen Suchtext enthalten. </p>
+<p>Ein weiterer Doppelklick auf eiene Quelltext-Zeile &ouml;ffnet in Scite nicht 
+  ein zweites mal den Quelltext, sondern springt nur zur gew&uuml;nschten Stelle 
+  und markiert den Suchbegriff.</p>
+<p>Hinweise:<br>
+  Ein nach unten Bl&auml;ttern im ZZO-Quelltext ist momentan nicht vorgesehen. 
+  Es ist so zu Filtern, dass das Gew&uuml;nschte erscheint oder der Fremd-Editor 
+  zu verwenden.<br>
+  Hochkommas im Filter haben momentan bei der &Uuml;bergabe an Scite die Einschr&auml;nkung, 
+  dass nur ein Hochkommaloser Teil (n&auml;mlich der L&auml;ngste) des Filters 
+  &uuml;bergeben wird.<br>
+  Verlassen des Quelltext-Modus: Menu | Optionen | Suche ruecksetzen, oder Edit2 
+  L&ouml;schen.</p>
+<h3>Editor (Scite) einrichten</h3>
+<p>Falls Scite nicht automatisch gefunden wird, kann eine Datei namens <samp>ScitePath.txt</samp> 
+  mit dem absoluten Pfad zur Datei <i>Scite.Exe</i> ins Skriptverzeichnis gestellt 
+  werden. <br>
+  Man kann in die Datei auch ein beliebiges Adapter-Skript eintragen, sodass auch 
+  andere Editoren implementiert werden k&ouml;nnen.<br>
+  Der erste &Uuml;bergabe-Parameter ist die Zeilenummer, der 2. der Such-Filter.</p>
+</body>
+</html>

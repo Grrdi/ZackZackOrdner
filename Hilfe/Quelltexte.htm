@@ -72,11 +72,17 @@
   Verlassen des Quelltext-Modus: Menu | Optionen | Suche ruecksetzen, oder Edit2 
   L&ouml;schen.</p>
 <h3>Editor (Scite) einrichten</h3>
-<p>Falls Scite nicht automatisch gefunden wird, kann eine Datei namens <samp>ScitePath.txt</samp> 
-  mit dem absoluten Pfad zur Datei <i>Scite.Exe</i> ins Skriptverzeichnis gestellt 
-  werden. <br>
+<p>Falls <i>Scite</i> nicht automatisch gefunden wird, kann eine Datei namens 
+  <samp>ScitePath.txt</samp> mit dem absoluten Pfad zur Datei <i>Scite.Exe</i> 
+  ins Skriptverzeichnis gestellt werden. <br>
   Man kann in die Datei auch den Pfad eines beliebiges Adapter-Skriptes eintragen, 
   sodass auch andere Editoren implementiert werden k&ouml;nnen.<br>
-  Der erste &Uuml;bergabe-Parameter ist die Zeilenummer, der 2. der Such-Filter.</p>
+  Der 1. &Uuml;bergabe-Parameter ist der Pfad zum Quelltext, der 2. die Zeilenummer, 
+  der 3. der Such-Filter siehe folgende Quelltext-Zeile:<code><br>
+  Run, &quot;%ScitePath%&quot; <font size="+1">&quot;%Path%&quot; -goto:%ZeilenNr% 
+  &quot;-find:%Suchtext%&quot;</font><font size="-2">,,,DieseEditorPid</font></code><br>
+  Falls Ihr ein Adapter-Skript schreibt w&auml;re eine Ver&ouml;ffentlichung im 
+  AutoHotKey-Forum unter <a href="https://autohotkey.com/boards/viewtopic.php?f=10&t=15248">ZackZackOrdner</a> 
+  hilfreich.</p>
 </body>
 </html>

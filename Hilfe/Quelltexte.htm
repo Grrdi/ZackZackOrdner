@@ -6,10 +6,11 @@
 
 <body bgcolor="#FFFFFF" text="#000000">
 <h2>Quelltexte</h2>
-<p>Ein Quelltext ist in ZZO (ZackZackOrdner) erst einmal nur ein Text der mit 
-  Zeilenummern angezeigt wird.</p>
-<p>&Uuml;ber diese Zeilennummer kann einem Fremd-Editor jedoch mitgeteilt werden, 
-  wo gerade der Fokus erwartet wird.</p>
+<p>Ein Quelltext ist in ZZO (ZackZackOrdner) erst einmal nur ein Text, der mit 
+  Zeilenummern angezeigt wird.<br>
+  Der <b>Quelltext-Modus</b> macht nicht viel mehr als Quelltexte anzuzeigen bzw. 
+  sie zeilenweise zu Filtern mit Sprung-M&ouml;glichkeit zu selben Quelltext-Stelle 
+  in einem Fremd-Editor. </p>
 <h3>Quelltext-Modus</h3>
 <p>Der Quelltext-Modus kann &uuml;ber verschiedene Wege erreicht werden:</p>
 <ol>
@@ -33,9 +34,9 @@
     mit markiertem :: &ouml;ffnen. Z.B.:<br>
     <table>
       <tr> 
-        <td><samp>#</samp></td>
+        <td><samp>#v</samp></td>
         <td bgcolor="#CCCCCC"><samp>::</samp></td>
-        <td><samp> ; (Clipboard-) Menue</samp></td>
+        <td><samp> &nbsp;; (Clipboard-) Menue</samp></td>
       </tr>
     </table>
   </li>
@@ -45,10 +46,10 @@
   <li>und mit F5 aktualisieren<br>
     nun sollte die Zeile in ZZO etwa folgenderma&szlig;en ausehen<br>
     <samp>911~~~~~~~#v:: ; oeffnet das (Clipboard-) Menue</samp><br>
-    bzw inScite<br>
+    bzw. die Scite-Ansicht<br>
     <table>
       <tr> 
-        <td bgcolor="#FFFF00"><samp>#</samp><samp>::</samp><samp> ; oeffnet das 
+        <td bgcolor="#FFFF00"><samp>#v</samp><samp>::</samp><samp> ; oeffnet das 
           (Clipboard-) Menue</samp></td>
       </tr>
     </table>
@@ -56,12 +57,33 @@
   </li>
 </ul>
 <h3>Quelltext filtern</h3>
-<p>Im Einf&uuml;hrenden Beispiel wurden zwei Doppelpunkte eingegeben. Hier kann 
-  beliebiger Text eingegeben werden und es werden nur noch Zeilen angezeigt, die 
-  diesen Suchtext enthalten. </p>
+<p>Im Einf&uuml;hrenden Beispiel wurden als Filter zwei Doppelpunkte eingegeben. 
+  Hier kann beliebiger Text eingegeben werden und es werden nur noch Zeilen angezeigt, 
+  die diesen Suchtext enthalten. </p>
 <p>Ein weiterer Doppelklick auf eiene Quelltext-Zeile &ouml;ffnet in Scite nicht 
   ein zweites mal den Quelltext, sondern springt nur zur gew&uuml;nschten Stelle 
   und markiert den Suchbegriff.</p>
+<p>Durch Filtern, mit der Zeilenweisen Darstellung, k&ouml;nnen unter anderem 
+  folgende Fragestellungen erleichtert, unterst&uuml;tzt oder sogar beantwortet 
+  werden:</p>
+<ol>
+  <li>Wo wird &uuml;berall die Variable mit dem Name ... verwendet</li>
+  <li>Wo wird &uuml;berall das Label ... aufgerufen</li>
+  <li>Wo wird &uuml;berall die Funktion ... aufgerufen?</li>
+  <li>Ist Variable ... verwaist?</li>
+  <li>HotKey/HotString- Liste (Filter ::)</li>
+  <li>Ist der (Var- / Func- / Label-) Name noch frei?</li>
+  <li>Kommentare vereinheitlichen</li>
+  <li>Wie war doch noch der exakte Name von?<br>
+    und das ohne die Editor-Stelle zu verlieren an der gerade gearbeitet wird.</li>
+  <li>Inhaltsverzeichnis erstellen (im ZZO-Quelltext durch den Filter <samp>##############################</samp>)</li>
+  <li>Gui-Befehle bzw Menu-Befehle &uuml;bersichtlicher vergleichen (z.B. durch 
+    den Filter Add)</li>
+  <li>ToDo Liste an Ort und Stelle im Kontext erstellen. (z.B. durch den Filter 
+    ToDo)</li>
+  <li>Quelltext aufr&auml;umen (der ZZO-Quelltext ist kein gutes Beispiel daf&uuml;r)</li>
+</ol>
+<p>Plus sicherlich viele Erleichterungen mehr.</p>
 <p>Hinweise:<br>
   Ein nach unten Bl&auml;ttern im ZZO-Quelltext ist momentan nicht vorgesehen. 
   Es ist so zu Filtern, dass das Gew&uuml;nschte erscheint oder der Fremd-Editor 
@@ -70,7 +92,9 @@
   dass nur ein Hochkommaloser Teil (n&auml;mlich der L&auml;ngste) des Filters 
   &uuml;bergeben wird.<br>
   Verlassen des Quelltext-Modus: Menu | Optionen | Suche ruecksetzen, oder Edit2 
-  L&ouml;schen.</p>
+  L&ouml;schen.<br>
+  Ein Bearbeiten des Quelltextes in ZZO ist nicht vorgesehen. (Dazu ist der Fremd-Editor 
+  da.) Teile davon heraus zu kopieren ins Clipboard, sehrwohl.</p>
 <h3>Editor (Scite) einrichten</h3>
 <p>Falls <i>Scite</i> nicht automatisch gefunden wird, kann eine Datei namens 
   <samp>ScitePath.txt</samp> mit dem absoluten Pfad zur Datei <i>Scite.Exe</i> 

@@ -1,5 +1,4 @@
 ; SetFormat,integer,h
-SoundBeep
 ue1=%1%
 if(Ue1="einmal")
 	NurEinDurchlauf:=true
@@ -26,8 +25,7 @@ Loop 0
 }
 ; TextStellenIndex:=1
 ; TopParentTxtMaxLen:=100
-TopParentID:= Decimal_to_Hex(DllCall("GetDesktopWindow"))
-; SoundBeep
+; TopParentID:= Decimal_to_Hex(DllCall("GetDesktopWindow"))
 ; SuchKennung:="- Suchergebnisse in """
 SuchKennungsListe=- Suchergebnisse in,- search,-%A_Space%
 SuchKennungLen:=StrLen(SuchKennung)
@@ -61,6 +59,7 @@ Loop
 		}
 			*/
 	AktWinHwnd:=WinExist("A")
+	WinGetText, WinTitleTxt, ahk_id %TopParentID% ; ,ahk_id %AktWinHwnd%	; liefert was
 	Anzeige=
 	Loop
 	{
@@ -101,9 +100,7 @@ Loop
 		FuerEdit2:=trim(FuerEdit2)
 		if((Fuer_Edit2<>FuerEdit2Last) and Fuer_Edit2<>"" and CacheModus)
 		{
-			ControlSetText,Edit4,SufiAus.,ZackZackOrdner ahk_class AutoHotkeyGUI
-			sleep 30
-			ControlSetText,Edit2,%FuerEdit2%,ZackZackOrdner ahk_class AutoHotkeyGUI
+			ControlSetText,Edit2,%FuerEdit2%,ZackZackOrdner
 			if NurEinDurchlauf
 				ExitApp
 		}
@@ -114,7 +111,7 @@ Loop
 			; SoundBeep
 			if CacheModus
 			{
-				ControlGetText,VorhandenerText,Edit7,ZackZackOrdner ahk_class AutoHotkeyGUI
+				ControlGetText,VorhandenerText,Edit7,ZackZackOrdner
 				if VorhandenerText is Integer
 				{
 				}
@@ -126,9 +123,7 @@ Loop
 				}
 				else
 				{
-					ControlSetText,Edit4,SufiAus.,ZackZackOrdner ahk_class AutoHotkeyGUI
-					sleep 30
-					ControlSetText,Edit7,%OrdnerName%,ZackZackOrdner ahk_class AutoHotkeyGUI
+					ControlSetText,Edit7,%OrdnerName%,ZackZackOrdner
 					OrdnerNameLast:=OrdnerName
 					if NurEinDurchlauf
 						ExitApp
@@ -138,60 +133,17 @@ Loop
 		}
 		if DirektModus
 		{
-			
 			ControlGetText,SuchstringAusfuehlich,ToolbarWindow323, ahk_id %AktWinHwnd%
-			; MsgBox % SuchstringAusfuehlich
-			if(SuchstringAusfuehlich="")
-			{
-				WinGetText, TopParentTxt, ahk_id %TopParentID% ; ,ahk_id %AktWinHwnd%	; liefert was
-				SuchstringAusfuehlich:=TopParentTxt
-				LocationPos:=InStr(SuchstringAusfuehlich,"location:")
-				LocationPosLen:=InStr(SubStr(SuchstringAusfuehlich,LocationPos),"`n")-11
-				LocationPath:=SubStr(SuchstringAusfuehlich,LocationPos+9,LocationPosLen)
-
-			}
-			else
-			{
-				LocationPos:=InStr(SuchstringAusfuehlich,"location:")
-				; LocationPosLen:=InStr(SubStr(SuchstringAusfuehlich,LocationPos),"`n")-10
-				LocationPath:=SubStr(SuchstringAusfuehlich,LocationPos+9)
-			}
-			if(LocationPos=0) ; Pfad nicht ermittelbar
-			{
-				
-				; ControlSetText,Edit4,SufiAus.,ZackZackOrdner ahk_class AutoHotkeyGUI
-				; ControlSetText,Edit2,%Fuer_Edit2%,ZackZackOrdner ahk_class AutoHotkeyGUI 
-				; LocationPathLast:=LocationPath
-				SoundBeep, 4000
-				SoundBeep, 4000
-				SoundBeep, 4000
-				if NurEinDurchlauf
-				{
-					ExitApp
-				}
-				break
-			}
-			; MsgBox % LocationPath
+			LocationPos:=InStr(SuchstringAusfuehlich,"location:")
+			LocationPath:=SubStr(SuchstringAusfuehlich,LocationPos+9)
 			StringReplace,LocationPath,LocationPath,`%3A,:,All
 			StringReplace,LocationPath,LocationPath,`%5C,`\,All
 			StringReplace,LocationPath,LocationPath,`%20,%A_Space%,All
 			ToolTip >%FuerEdit2%< in`n>%LocationPath%<	;	`n>%SuchstringAusfuehlich%<
 			Fuer_Edit2m:=Fuer_Edit2
 			if(SubStr(LocationPath,0,1)="`\")
-			if(SubStr(LocationPath,0,1)="`\")
 				StringTrimRight,LocationPath,LocationPath,1
-			if(SubStr(LocationPath,1)="`\")		; Pfad nicht ermittelbar oder Netzlaufwerk, es wird doch der CacheModus verwendet
-			{
-				; Fuer_Edit2 bleibt wie oben definiert
-				ControlSetText,Edit4,SufiAus.,ZackZackOrdner ahk_class AutoHotkeyGUI
-				ControlSetText,Edit2,%Fuer_Edit2%,ZackZackOrdner ahk_class AutoHotkeyGUI 
-				LocationPathLast:=LocationPath
-				if NurEinDurchlauf
-					ExitApp
-				break
-			}
-			else
-				Fuer_Edit2:="Filp://" LocationPath "\*" FuerEdit2 "*`,DFR" A_Space "in_RoW?" A_Space ; OrdnerName A_Space
+			Fuer_Edit2:="Filp://" LocationPath "\*" FuerEdit2 "*`,DFR" A_Space "in_RoW?" A_Space ; OrdnerName A_Space
 
 			if(FuerEdit2Last<>Fuer_Edit2)
 			{
@@ -201,7 +153,6 @@ Loop
 			sleep 50
 			if(not InStr(Edit2Vorhanden,"FilP://") or LocationPath<>LocationPathLast)
 			{
-				; ControlSetText,Edit4,SufiAus.,ZackZackOrdner ahk_class AutoHotkeyGUI		; scharfschalten wenn Sufi ausgewertet wird!
 				ControlSetText,Edit2,%Fuer_Edit2%,ZackZackOrdner ahk_class AutoHotkeyGUI 
 				; ToolTip,%A_LineNumber% >%FuerEdit2%< 	>%OrdnerName%< 		%Fuer_Edit2%
 				LocationPathLast:=LocationPath

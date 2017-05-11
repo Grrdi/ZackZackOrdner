@@ -1,0 +1,7 @@
+ä|&auml;
+Ä|&Auml;
+ö|&ouml;
+Ö|&Ouml;
+ü|&uuml;
+Ü|&Uuml;
+ß|&szlig; 

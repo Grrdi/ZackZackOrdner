@@ -60,7 +60,7 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
 <p><b>M&auml;chtige Macro-Umgebung</b> mit optionaler <b>Einmal</b>- oder <b>Intevall</b>-<b>Startm&ouml;glichkeit</b>. 
   Damit lassen sich <b>automatisiert</b> Logdateien, Fehlermeldunngen, freier 
   SpeicherPlatz etc <b>&uuml;berwachen</b> und bei Bedarf kann auch <b>alarmiert</b> 
-  (z.B. E-Mail) werden. Automatishe Verteiler (um-kopieren) von Dateien nach Datei-Inhalten 
+  (z.B. E-Mail) werden. Automatische Verteiler (um-kopieren) von Dateien nach Datei-Inhalten 
   oder Namen oder nach Zufall lassen sich auch durch Macros realisieren..</p>
 <p>F&uuml;r fast alle oben genannte Funktionalit&auml;ten lassen sich <b>Start-Macro</b>s 
   erzeugen und anschlie&szlig;end auch direkt aufrufen.</p>

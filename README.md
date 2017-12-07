@@ -45,7 +45,7 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
   sich mit geringer Verz&ouml;gerung durchsuchen.</p>
 <p>Stichwortartige Nennung weiterer Funktionalit&auml;ten: <b>Clipboard Tool</b>, 
   selbst aktualisierende ClipBoard-Anzeige, Clipboard Eitor, &ouml;ffnen mit, 
-  Funstellen sortieren, Anlegen von Ordner-/Datei-Strukturen nach Muster, SuperFavoriten 
+  Fundstellen sortieren, Anlegen von Ordner-/Datei-Strukturen nach Muster, SuperFavoriten 
   (Direktaufruf von Favoriten und Macros), Fundstellen-genauer-Scite-Editor-Direktaufruf 
   vom selectiven Dateibetrachter. Datei-/Ordner-Zeitstempel ver&auml;ndern, GuiDropFile, 
   Benutzer-Spezifischer Button, Machs Beste draus --&gt; Versuch f&uuml;r das 

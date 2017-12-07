@@ -6,7 +6,7 @@ Das Hauptziel  des Skripts ist, eine flotte Verwendung von Ordnern. / The main g
 
 https://github.com/Grrdi/ZackZackOrdner/archive/master.zip entpacken<br>
 und SchnellOrdner.ahk mit AutoHotkey Version 1. Hoechste starten<br>
-Näheres siehe Hilfe-Datei:<br>
+NÃ¤heres siehe Hilfe-Datei:<br>
 SchnellOrdner.ahk.htm<br>
 und <br>
 https://autohotkey.com/boards/viewtopic.php?f=10&t=15248<br>
@@ -20,7 +20,7 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
 <p>ZackZackOrdner ist inzwischen wesentlich mehr als ein sehr <b>schnelles Ordner-Such-Programm</b>. 
   Fast genau so schnell <b>findet</b> man damit <b>Dateien</b>. Eine integrierte 
   <b>Favoriten-Datenbank</b> / Favoriten-Verwaltung unterst&uuml;tzt auch gro&szlig;e 
-  Vavoriten-Sammlungen in gewohnter Suchumgebung und finde-Geschwindigkeit. Da 
+  Favoriten-Sammlungen in gewohnter Suchumgebung und finde-Geschwindigkeit. Da 
   Programme letztendlich auch nur Dateien sind wurde ein Container dem Thema <b>Programmstart</b> 
   gewidmet. Durch einen effizienten Cache ist das bisher genannte so schnell, 
   dass es w&auml;hrend der Eingabe schon passende Suchergebnisse anzeigt und das 

@@ -51,7 +51,7 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
   Benutzer-Spezifischer Button, Machs Beste draus --&gt; Versuch f&uuml;r das 
   fokusierte Control (+ weitere Infos) das hier sinvolle (und stets harmlose), 
   durch zu f&uuml;hren.</p>
-<p>Bei den oben genannten Suchen lassen meist via Vorfilter die anzufassenden 
+<p>Bei den oben genannten Suchen lassen sich meist via Vorfilter die anzufassenden 
   Elemente einschr&auml;nken (sehr schnell aber nur ein Suchbegriff m&ouml;glich), 
   mit einem Nachfilter k&ouml;nnen die schon eingeschr&auml;nkten Vor-Ergebnisse 
   auf den exakten Bedarfsfall beschr&auml;nkt werden, hierbei sind <b>UND</b> 

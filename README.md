@@ -41,7 +41,7 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
 <p>Nicht nur Text-Dateien enthalten Text, auch das <b>Clipboard</b>, <b>editierbare-Fenster-Elemente</b> 
   von <b>Fremd-Fenstern</b>, <b>Web-Inhalte</b>. Einige Text anzeigende Fenster 
   Elemente lassen sich von ZZO direkt durchsuchen bzw. selektiv betrachten.</p>
-<p><b>Dateigr&ouml;&szlig;en</b> bei denen z.B. Notepad shon lange aussteigt lassen 
+<p><b>Dateigr&ouml;&szlig;en</b> bei denen z.B. Notepad schon lange aussteigt lassen 
   sich mit geringer Verz&ouml;gerung durchsuchen.</p>
 <p>Stichwortartige Nennung weiterer Funktionalit&auml;ten: <b>Clipboard Tool</b>, 
   selbst aktualisierende ClipBoard-Anzeige, Clipboard Eitor, &ouml;ffnen mit, 

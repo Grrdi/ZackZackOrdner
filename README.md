@@ -57,7 +57,7 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
   auf den exakten Bedarfsfall beschr&auml;nkt werden, hierbei sind <b>UND</b> 
   oder <b>ODER</b> (z.B. Maier,Mayer,Meier,Meyer) <b>verkn&uuml;pfte</b> Suchworlisten 
   und daraus gebildete kombinationen erlaubt . </p>
-<p><b>M&auml;chtige Macro-Umgebung</b> mit optionaler <b>Einmal</b>- oder <b>Intevall</b>-<b>Startm&ouml;glichkeit</b>. 
+<p><b>M&auml;chtige Macro-Umgebung</b> mit optionaler <b>Einmal</b>- oder <b>Intervall</b>-<b>Startm&ouml;glichkeit</b>. 
   Damit lassen sich <b>automatisiert</b> Logdateien, Fehlermeldunngen, freier 
   SpeicherPlatz etc <b>&uuml;berwachen</b> und bei Bedarf kann auch <b>alarmiert</b> 
   (z.B. E-Mail) werden. Automatische Verteiler (um-kopieren) von Dateien nach Datei-Inhalten 

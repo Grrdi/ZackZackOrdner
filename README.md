@@ -62,5 +62,5 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
   SpeicherPlatz etc <b>&uuml;berwachen</b> und bei Bedarf kann auch <b>alarmiert</b> 
   (z.B. E-Mail) werden. Automatische Verteiler (um-kopieren) von Dateien nach Datei-Inhalten 
   oder Namen oder nach Zufall lassen sich auch durch Macros realisieren..</p>
-<p>F&uuml;r fast alle oben genannte Funktionalit&auml;ten lassen sich <b>Start-Macro</b>s 
-  erzeugen und anschlie&szlig;end auch direkt aufrufen.</p>
+<p>F&uuml;r fast alle oben genannten Funktionalit&auml;ten lassen sich <b>Start-Macro</b>s 
+  erzeugen (Macro in den Uebergabe-Parametern von Standart-LNK-Verknuepfungen) und anschlie&szlig;end auch direkt aufrufen.</p>

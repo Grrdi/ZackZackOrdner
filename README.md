@@ -44,7 +44,7 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
 <p><b>Dateigr&ouml;&szlig;en</b> bei denen z.B. Notepad schon lange aussteigt lassen 
   sich mit geringer Verz&ouml;gerung durchsuchen.</p>
 <p>Stichwortartige Nennung weiterer Funktionalit&auml;ten: <b>Clipboard Tool</b>, 
-  selbst aktualisierende ClipBoard-Anzeige, Clipboard Eitor, &ouml;ffnen mit, 
+  ClipBoard-Anzeige, Clipboard Eitor, &ouml;ffnen mit, 
   Fundstellen sortieren, Anlegen von Ordner-/Datei-Strukturen nach Muster, SuperFavoriten, DLL-Infos,
   (Direktaufruf von Favoriten und Macros), Fundstellen-genauer-Scite-Editor-Direktaufruf 
   vom selectiven Dateibetrachter. Datei-/Ordner-Zeitstempel ver&auml;ndern, GuiDropFile, 
@@ -63,4 +63,4 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
   (z.B. E-Mail) werden. Automatische Verteiler (um-kopieren) von Dateien nach Datei-Inhalten 
   oder Namen oder nach Zufall lassen sich auch durch Macros realisieren..</p>
 <p>F&uuml;r fast alle oben genannten Funktionalit&auml;ten lassen sich <b>Start-Macro</b>s 
-  erzeugen (Macro in den Uebergabe-Parametern von Standart-LNK-Verknuepfungen) und anschlie&szlig;end auch direkt aufrufen.</p>
+  erzeugen (Macro in den Uebergabe-Parametern von Standart-LNK-Verknuepfungen) und anschlie&szlig;end auch direkt aufrufen. So laesst sich ZZO bspw. direkt als selbst aktualisierende ClipBoard-Anzeige starten.</p>

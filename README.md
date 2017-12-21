@@ -28,7 +28,7 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
   eine Kaffe-Pause bis hin zur &Uuml;ber-Nacht-Suche erforderlich machen kann. 
   Bord-Mittel wie <b>Explorer</b> bzw. <b>Speichern</b> ... <b>Dialoge</b> werden 
   <b>unterst&uuml;tzt</b>, nicht ersetzt.</p>
-<p>Wesentlich vielf&auml;ltiger ist jedoch die <a href="LiveSuche.htm">Live-Suche</a>, 
+<p>Wesentlich vielf&auml;ltiger ist jedoch die <a href="LiveSuche.md">Live-Suche</a>, 
   sie arbeitet ohne Cache (gespeicherte Suchbeschleuniger). Auch mit der Live-Suche 
   kann oben erw&auml;hntes gefunden / gehandelt werden. Dar&uuml;ber hinaus gibt 
   es <b>selektive Dateibetrachter</b>, d.h. von einer Datei werden nur die Inhaltszeilen 

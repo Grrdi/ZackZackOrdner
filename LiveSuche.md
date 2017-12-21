@@ -25,7 +25,7 @@
   Edit5 eiene Zeile doppelgeklickt werden und sie springt markiert in Scite auf.</p>
 <p>ZZO verh&auml;lt sich bei der Eingabesyntax meist kompromisslos. Bei Syntaxfehlern 
   ist die Ausgabe haufig leer. <br>
-  Deshalb wurde obiges Beispiel farbig hinterlegt:<br>
+  Deshalb wurde obiges Beispiel farbig hinterlegt: (die Farben werden von Github bei MD-Dateien nicht unterstuetzt, bitte LiveSuche.htm herunterladen und oeffnen.) <br>
   <code><span style="background-color:#DDFFDD;">file://</span><span style="background-color:#FFDDDD;">C:\Program 
   Files (x86)\ZackZackOrdner\SchnellOrdner.ahk</span><span style="background-color:#FFFFDD;">&nbsp;</span><span style="background-color:#DDFFFF;">Nr_Row?</span><span style="background-color:#FFFFDD;">&nbsp;</span><span style="color:red;background-color:#CCCCFF;">Doppelklick</span></code><br>
 <p>in den Tabellen unten sind die Zuordnungen ersichtlich. Ohne die <code><span style="background-color:#FFFFDD;">Leerzeichen</span></code> 

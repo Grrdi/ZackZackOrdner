@@ -4,21 +4,35 @@
 ; Danke justme	ohne den ich nicht so weit gekommen waere
 ; https://msdn.microsoft.com/en-us/library/aa752084(v=vs.85).aspx
 ; HTML Befehlsuebersicht	http://www.webhinweis.de/html/html_tabelle.html	
+; Danke IsNull	OOP Einfuehrung in deutsch	http://ahkscript.org/germans/forums/viewtopic.php?t=7884
 ; Mein erster ernsthafter Versuch, der Erstellung einer eigenen Class
 ;}	
-
+; Man definiert mit Klassen, wie Objekte (Instanzen von Klassen) ausschauen, welche Daten sie enthalten und welche Methoden (Funktionalität) sie anbieten.
+; z.B.:             wBr                   S1                                        S1.WinHwnd                               S1.getUrl()
+; "this". This beinhalted immer eine Referenz zur aktuellen Objekt-Instanz. 
+; __New([params]). ist der Klassen Konstruktor 
+; static Variablen sind in allen Instanzen gleich
 class wBr {
+	static instances := 0		; die nackte Var "instances" ist ohne fuehrende "Obj-Var." nicht sichtbar in der __New() Funktion.
+	ErstellZeit:=A_Now		; die nackte Var "ErstellZeit" ist ohne fuehrende "Obj-Var." nicht sichtbar in der __New() Funktion.
 	__New( WbName ) {
 		this.name := WbName
 		if(WbName="IE_"){	; Wenn der New wb(Uebergabe-Parameter) exakt "IE_" enthaelt, dann wird das zuletzt benutzte IE_Reiter-Fenster uebernommen.
 			this.Com := this.WBGet()
 			this.WinHwnd:=this.Com.HWND
+			wBr.instances++
+			this.instanceNr:=wBr.instances
+			this.erstellZeit:=this.ErstellZeit
 		}
 		else if (SubStr(WbName,1,3)="IE_")	; Wenn der New wb(Uebergabe-Parameter) mit "IE_" beginnt, dann wird ein neues IE_Reiter-Fenster erstellt.
 		{
 			this.Com := ComObjCreate("InternetExplorer.Application")
 			Sleep 300
 			this.WinHwnd:=this.Com.HWND
+			wBr.instances++
+			this.instanceNr:=this.base.instances
+			this.instanceNr:=wBr.instances		; this.instanceNr:=this.instances  oder  this.instanceNr:=this.base.instances  haetten zum selben Ergebnis gefuehrt.	instances alleine wird wie nicht existent behandelt.
+			this.erstellZeit:=this.ErstellZeit
 		}
 		else		;  Wenn der New wb(Uebergabe-Parameter) nicht mit "IE_" beginnt, dann ... --> Reserviert fuer andere Browser
 		{
@@ -184,7 +198,7 @@ class wBr {
 		Parents:={}
 		ParentKnoten:=Obj
 		ParentTagName:=ParentKnoten.TagName
-		if(ParentTagName="html")
+		if(ParentTagName="html" OR ParentTagName="")
 			return
 		ParentAnz:=0
 		Loop, % Tiefe {
@@ -230,18 +244,26 @@ class wBr {
 		}
 		return Knoten
 	}
-	GetElementsHtmlByTagName(Tag="",ParentTiefe="",quick="1"){
-		short:=false
-		if(SubStr(Tag,1,1)="-")
+	GetElementsHtmlByTagName(Tag="",ParentTiefe="",quick="1",MaxFundZeien="50000"){
+		short:=false					; IeEx://divin_Row? ¬<html`n¬<head`n¬<body
+		long:=false
+		TagChar1 := SubStr(Tag,1,1)
+		if(TagChar1="-")
 		{
 			short:=true
 			StringTrimLeft,Tag,Tag,1
 		}
+		else if(TagChar1="+")
+		{
+			long:=true
+			StringTrimLeft,Tag,Tag,1
+		}
 		if (Tag="")
 			Tag:= "*"
-		B:={}
 		this.Element:={}
-		
+		F := 0
+		FEnd := false
+		FBreak := false
 		Alle := this.Com.document.getElementsByTagName(Tag)
 		Anz:=Alle.Length
 		Loop % Anz
@@ -249,31 +271,67 @@ class wBr {
 			TagIndex:=A_Index - 1
 			Parents := this.getParents(Alle[TagIndex])
 
-			if not quick
+			if quick
 			{
-				this.Element[TagIndex]:={}
-				
-				this.Element[TagIndex].outerHtml := Alle[TagIndex].OuterHTML
-				this.Element[TagIndex].ParentVersatzt := Parents.ParentVersatzt					;	
-				this.Element[TagIndex].ParentPath := Parents.ParentPath
-			}
-			; ParentPathElementsText .= Parents.ParentPath . "   " . StrReplace(StrReplace(Alle[TagIndex].OuterHTML,"`n",A_Space,All),"`t",A_Space,All) . "`r`n"
-			if short
-			{
-				TagA:=Alle[TagIndex].OuterHTML
-				EckZuPos:=InStr(TagA,">")
-				ParentPathElementsText .= TagIndex A_Space Parents . "   " . SubStr(TagA,1,EckZuPos) . "`r`n"
+				if(F > MaxFundZeien)
+				{
+					FBreak := true
+					break
+				}
+
+			; MsgBox, % 	Parents "`n"	Alle[TagIndex].outerHTML "`n"	Alle[TagIndex].innerHTML "`n"	Alle[TagIndex].outerText "	`n"	Alle[TagIndex].innerText  "`n"	Alle[TagIndex].TagName
+				if short
+				{
+					ParentPathElementsText .= TagIndex A_Space Parents . "   " . "<" Alle[TagIndex].TagName . ">`r`n"
+					++F
+				}
+				else if long
+				{
+					; TagA:=Alle[TagIndex].OuterHTML
+					ParentPathElementsText .= TagIndex A_Space Parents . "   " . StrReplace(StrReplace(Alle[TagIndex].OuterHTML,"`n",A_Space,All),"`t",A_Space,All) . "`r`n"
+					++F
+				}
+				else
+				{
+					; SoundBeep, 5000,50
+					; TagA:=Alle[TagIndex].OuterHTML
+					; EckZuPos:=InStr(TagA,">")
+					ParentPathElementsText .= TagIndex A_Space Parents . A_Tab . "<" Alle[TagIndex].TagName . ">" . A_Tab . StrReplace(StrReplace(Alle[TagIndex].outerText,"`n",A_Space,All),"`t",A_Space,All)  . "`r`n"
+					++F
+				}
 			}
 			else
-				ParentPathElementsText .= TagIndex A_Tab Parents . "   " . StrReplace(StrReplace(Alle[TagIndex].OuterHTML,"`n",A_Space,All),"`t",A_Space,All) . "`r`n"
+			{
+				this.Element[TagIndex]:={}
+				if long
+				{
+					this.Element[TagIndex].outerHtml := {}
+					this.Element[TagIndex].outerHtml := Alle[TagIndex].OuterHTML
+				}
+				else if short
+				{
+					this.Element[TagIndex].TagName := {}
+					this.Element[TagIndex].TagName := "<" Alle[TagIndex].TagName . ">"
+				}
+				else
+				{
+					this.Element[TagIndex].innerText := {}
+					this.Element[TagIndex].innerText := Alle[TagIndex].innerText
+				}
+				; this.Element[TagIndex].ParentVersatzt := {}			;	
+				; this.Element[TagIndex].ParentVersatzt := Parents.ParentVersatzt					;	
+				this.Element[TagIndex].ParentPath := {}
+				this.Element[TagIndex].ParentPath := Parents
+			}
 		}
 		if quick
 		{
-			StringTrimRight,ParentPathElementsText,ParentPathElementsText,2
+			if NOT FBreak			; wenn letzte Zeile leer, dann wurde abgebrochen!
+				StringTrimRight,ParentPathElementsText,ParentPathElementsText,2
 			return ParentPathElementsText
 		}
-		this.ParentPathElementsText := ParentPathElementsText
-		return this.ElementsHtml:=B
+;		this.ParentPathElementsText := ParentPathElementsText
+		return  this.Element
 	}
 	GetSetOneOfAllTags(getElementsBy="",Suchliste="",NachDot="",InKlammenValue="KlammerLos",setValue="",TagIndexVorrang=""){			; Universal-Methode
 ; 		try	; Parameter 1 = Tag-Filer	2 = QuellTextSuchWoerter-Pipe|getrennt	3 = Aktion mit gefundenem Element	4 = KlammerInhalt	5 = Leer fuer get's	5 = Value fuer set's

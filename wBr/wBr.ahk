@@ -269,7 +269,13 @@ class wBr {
 		Loop % Anz
 		{
 			TagIndex:=A_Index - 1
-			Parents := this.getParents(Alle[TagIndex])
+try
+				Parents := this.getParents(Alle[TagIndex])
+catch
+{
+	; moegliche Ursache: Zugriff verweigert
+	continue
+}
 
 			if quick
 			{
@@ -279,7 +285,6 @@ class wBr {
 					break
 				}
 
-			; MsgBox, % 	Parents "`n"	Alle[TagIndex].outerHTML "`n"	Alle[TagIndex].innerHTML "`n"	Alle[TagIndex].outerText "	`n"	Alle[TagIndex].innerText  "`n"	Alle[TagIndex].TagName
 				if short
 				{
 					ParentPathElementsText .= TagIndex A_Space Parents . "   " . "<" Alle[TagIndex].TagName . ">`r`n"
@@ -293,9 +298,6 @@ class wBr {
 				}
 				else
 				{
-					; SoundBeep, 5000,50
-					; TagA:=Alle[TagIndex].OuterHTML
-					; EckZuPos:=InStr(TagA,">")
 					ParentPathElementsText .= TagIndex A_Space Parents . A_Tab . "<" Alle[TagIndex].TagName . ">" . A_Tab . StrReplace(StrReplace(Alle[TagIndex].outerText,"`n",A_Space,All),"`t",A_Space,All)  . "`r`n"
 					++F
 				}
@@ -318,8 +320,6 @@ class wBr {
 					this.Element[TagIndex].innerText := {}
 					this.Element[TagIndex].innerText := Alle[TagIndex].innerText
 				}
-				; this.Element[TagIndex].ParentVersatzt := {}			;	
-				; this.Element[TagIndex].ParentVersatzt := Parents.ParentVersatzt					;	
 				this.Element[TagIndex].ParentPath := {}
 				this.Element[TagIndex].ParentPath := Parents
 			}
@@ -396,9 +396,9 @@ class wBr {
 			Alle := this.Com.document
 			Loop 2
 				ElementFilter(Alle,getEl%A_Index%[1],getEl%A_Index%[2],INr)
-			
-			Anz:=Alle.Length
-			; MsgBox % "0	" Alle.0.outerHtml "`n" "1	" Alle.1.outerHtml "`n" "2	" Alle.2.outerHtml "`n" "3	" Alle.3.outerHtml "`n"
+			try
+				Anz:=Alle.Length
+
 			gesAnz:=0
 			indexFuerGes:=-1
 			if (Suchliste="")
@@ -407,7 +407,9 @@ class wBr {
 				AddKor:=0
 			Loop % Anz { ; Loop through Tags
 				TagIndex:=A_Index - 1
-				If ((All := Alle[TagIndex].OuterHTML) != "") { ; if the Tag is not blank
+			try
+				All := Alle[TagIndex].OuterHTML
+				If ((All) != "") { ; if the Tag is not blank
 					Funde:=0
 					PlusMinus1:=1
 					SuchStr:=StrSplit(Suchliste,"|")
@@ -423,21 +425,8 @@ class wBr {
 						}
 						Funstellen:=StrSplit(All,SuchStr[A_Index])
 						Funde+=(Funstellen.MaxIndex() -1) ; * PlusMinus1
-						; if TagIndex
-						{
-							; ParentFunstellen:=StrSplit(ParentNode,SuchStr[A_Index])
-							; ParentFunde:=(ParentFunstellen.MaxIndex() -1) ; * PlusMinus1
-							; MsgBox % ParentMulti "	" TagIndex "	" Funde "	" SuchStr[A_Index] "	" SuchStr[A_Index+1] "	" All "`n`n" ParentNode "`n`n" ges
-							; if (Funde AND InStr(this.getParent(this.Com.document.getElementsByTagName(Tag)[TagIndex]).OuterHTML,SuchStr[A_Index+1]))
-							; 	ParentMulti*=1.1
-							; else
-							;	ParentMulti*=1
-						}
-;						else
-							; ParentFunde+=0
 					}
 					if (Strlen(All)<15000 AND (Funde OR Suchliste="")) {
-						; ges .= ((PlusMinus1 * Funde * Funde + AddKor)*(ParentMulti)/Strlen(All))  / (SuchWortAnz ) . A_Tab . gesAnz . A_Tab . StrLen(All) "`n" ; Falls die Bewertungen hier nicht direkt zum gewuenschten Element fuerhren, kann auch mit mehrfach-Nennung eines Suchbegriffes, zu dessen Gunsten beeinflusst werden.
 						ges .= ((PlusMinus1 * Funde * Funde + AddKor)*(ParentMulti)/Strlen(All))  / (SuchWortAnz ) . A_Tab . TagIndex . A_Tab . StrLen(All) "`n" ; Falls die Bewertungen hier nicht direkt zum gewuenschten Element fuerhren, kann auch mit mehrfach-Nennung eines Suchbegriffes, zu dessen Gunsten beeinflusst werden.
 						B[TagIndex] :=all
 						++gesAnz
@@ -467,58 +456,30 @@ class wBr {
 					FileReadLine,ges_Line,%A_Temp%\wb_ges.txt,i
 					FuerTagIndex:=StrSplit(ges_Line,A_Tab)	
 					DieserAnsichtTagIndex:=FuerTagIndex[2] ; -1			; Index auf basis 0 korrigieren
-					; All := this.Com.document.getElementsByTagName(Tag)[DieserAnsichtTagIndex].ParentNode.ParentNode.ParentNode.ParentNode.OuterHTML
 					; this.Com.document.getElementsByTagName(Tag)[DieserAnsichtTagIndex].scrollIntoView()		; in den sichtbaren Bereich damit
-					; sleep 3000
-					; this.Com.document.getElementsByTagName(Tag)[DieserAnsichtTagIndex].innerHTML.selectext()		; in den sichtbaren Bereich damit
-					; sleep 3000
 					; this.Com.document.getElementsByTagName(Tag)[DieserAnsichtTagIndex].selectext()		; this.Com.ExecWB(selectAll:=17) this.Com.ExecWB(17,0) wuerde alles Selektieren, 18 entfernt die Selection		http://www.programering.com/a/MzM3UDNwATc.html)
-					; SoundBeep
-					; Sleep 3000
 					temp := this.Com.document
-					; Loop 2
-					{
 						ElementFilter(temp,getEl1[1],getEl1[2])
 						tempZwischen := temp
 						ElementFilter(temp,getEl2[1],getEl2[2],DieserAnsichtTagIndex)
-tempEnde:=temp
-						; ElementFilter(temp,getEl%A_Index%[1],getEl%A_Index%[2],DieserAnsichtTagIndex)
-						; if(A_Index=1)
-							; tempZwischen := temp
-					}
-					; temp := this.ElementFilter(this.ElementFilter(this.Com.document,getEl1[1],getEl1[2]),getEl2[1],getEl2[2],DieserAnsichtTagIndex)
-					
+						tempEnde:=temp
 					if info
 					{
-						; tempEnde.offsetTop := -300		; in den sichtbaren Bereich damit
 						tempEnde.parentNode.scrollIntoView()		; in den sichtbaren Bereich damit
-; ControlGetFocus, Steuerelement, A
-WinActivate,% "ahk_id " this.WinHwnd
-WinWaitActive,% "ahk_id " this.WinHwnd,,1
-; Eine Zeile nach unten scrollen:
-ControlGetFocus, Steuerelement, A
-SendMessage, 0x115, 0, 0, %Steuerelement%, A
-SendMessage, 0x115, 0, 0, %Steuerelement%, A
+						; ControlGetFocus, Steuerelement, A
+						WinActivate,% "ahk_id " this.WinHwnd
+						WinWaitActive,% "ahk_id " this.WinHwnd,,1
+						; Eine Zeile nach unten scrollen:
+						ControlGetFocus, Steuerelement, A
+						SendMessage, 0x115, 0, 0, %Steuerelement%, A
+						SendMessage, 0x115, 0, 0, %Steuerelement%, A
 
-Loop 7
-SendMessage, 0x115, 0, 0, , % "ahk_id " this.WinHwnd
-						; tempEnde.parentNode.scrollElmVert(el,-90)		; in den sichtbaren Bereich damit
-						; tempEnde.scrollTop += 100		; in den sichtbaren Bereich damit
-						; tempEnde.scrollDown()		; in den sichtbaren Bereich damit
+						Loop 7
+						SendMessage, 0x115, 0, 0, , % "ahk_id " this.WinHwnd
 						Wert:=tempEnde.outerHtml 
 						tempEnde.outerHtml := "<mark>" Wert "</mark>"
 					}
-					; temp.value := "<marquee>" Wert "</marquee>"
-					; MsgBox % wert
-					; temp := this.ElementFilter(this.ElementFilter(this.Com.document,""       ,ID)       ,"Tag"    ,Tag      ,DieserAnsichtTagIndex)
-					; temp:=this.Com.document.getElementsByTagName(Tag)[DieserAnsichtTagIndex]
-					; TagAnzeige := this.Com.document
 					TagAnzeige := temp.outerHtml
-					; Loop 2
-					;	ElementFilter(TagAnzeige,getEl%A_Index%[1],getEl%A_Index%[2],INr)
-					; TagAnzeige := this.ElementFilter(this.ElementFilter(this.Com.document,getEl2[1],getEl2[2]),getEl1[1],getEl1[2],DieserAnsichtTagIndex).OuterHTML
-					; TagAnzeige:=this.Com.document.getElementsByTagName(Tag)[DieserAnsichtTagIndex].OuterHTML
-;					All := this.getParent(temp).OuterHTML
 					try
 						All := tempZwischen.OuterHTML
 					All_Anzeige := A_Tab SubStr(StrReplace(StrReplace(All,"`n",A_Space,All),"`t",A_Space,All),1,1500)
@@ -554,31 +515,20 @@ SendMessage, 0x115, 0, 0, , % "ahk_id " this.WinHwnd
 				DieserTagIndex := TagIndexVorrang
 			else
 			DieserTagIndex := IndexOfBest
-			
-			
-			if (InKlammenValue="InKlammern")
-				InKlammenValue:=
 			if (InKlammenValue="KlammerLos")
 			{
-				InKlammenValue:=
+				; InKlammenValue:=
 				if (setValue="")
 				{
 					temp2 := this.Com.document
-					; Loop 2
-						; ElementFilter(temp2,getEl%A_Index%[1],getEl%A_Index%[2],DieserTagIndex,NachDot)
 						ElementFilter(temp2,getEl1[1],getEl1[2],DieserTagIndex)
 						ElementFilter(temp2,getEl2[1],getEl2[2],DieserTagIndex,NachDot)
-					; return temp2
-					; return this.ElementFilter(this.ElementFilter(this.Com.document,getEl1[1],getEl1[2]),getEl2[1],getEl2[2],DieserTagIndex)[NachDot]
 				}
 				else
 				{
 					temp2 := this.Com.document
-					; Loop 2
-						; ElementFilter(temp2,getEl%A_Index%[1],getEl%A_Index%[2],DieserTagIndex,NachDot) := setValue
 						ElementFilter(temp2,getEl1[1],getEl1[2],DieserTagIndex)
 						ElementFilter(temp2,getEl2[1],getEl2[2],DieserTagIndex,NachDot,,setValue) ; := setValue
-					; return temp2
 				}
 			}
 			else
@@ -586,27 +536,18 @@ SendMessage, 0x115, 0, 0, , % "ahk_id " this.WinHwnd
 				if (setValue="")
 				{
 					temp2 := this.Com.document
-					; Loop 2
-						; ElementFilter(temp2,getEl%A_Index%[1],getEl%A_Index%[2],DieserTagIndex,NachDot,InKlammenValue)
 						ElementFilter(temp2,getEl1[1],getEl1[2],DieserTagIndex)
 						ElementFilter(temp2,getEl2[1],getEl2[2],DieserTagIndex,NachDot,InKlammenValue)
-					; return temp2
 				}
 				else
 				{
 					temp2 := this.Com.document
-					; Loop 2
-						; ElementFilter(temp2,getEl%A_Index%[1],getEl%A_Index%[2],DieserTagIndex,NachDot,InKlammenValue) := setValue
 						ElementFilter(temp2,getEl1[1],getEl1[2],DieserTagIndex)
-						ElementFilter(temp2,getEl2[1],getEl2[2],DieserTagIndex,NachDot,InKlammenValue,setValue) ; := setValue
-
-				
+						ElementFilter(temp2,getEl2[1],getEl2[2],DieserTagIndex,NachDot,InKlammenValue,setValue) ; := setValue				
 				}			; ElementFilter(ByRef Knoten,FilterName="",Filter="",INr="",TagIndex="",NachDot="",InKlammenValue="") 
 			}
 		}
 		return temp2
-;		catch
-;			this.ifOnErrorDoExit(this.OnError.Exit)
 	}
 	FocusClick(ID:="",Name:="",ClassName:="",TagName:=""){
 		try{
@@ -871,7 +812,7 @@ S1.Navigate("https://autohotkey.com/boards/viewtopic.php?f=7&t=41332")
 
 ; MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags(/"Tag=html")
 MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","General","innerhtml",,"<marquee><mark>G e n e r a <i>l</i> :   G e n e r a <i>l</i> :   G e n e r a <i>l</i></mark></marquee>"),10
-MsgBox % S1.GetSetOneOfAllTags("+ID=profile188328/Tag=a","nnnik","outerHtml")
+MsgBox % S1.GetSetOneOfAllTags("+ID=profile188328/Tag=a","nnnik","click","InKlammern")
 ; MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("+strong","General","OuterHtml",,"General",0),10
 ; MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","General","innerhtml.selectedText",,"General",0),10
 ; MsgBox % S1.GetSetOneOfAllTags("+ID=profile188328/Tag=a",,"outerHtml")
@@ -917,16 +858,29 @@ ElementFilter(ByRef Knoten,FilterName="",Filter="",INr="",NachDot="",InKlammenVa
 				Knoten:=Knoten.getElementsByTagName(Filter)[INr]
 			else if(NachDot<>"")
 			{
-				if (InKlammenValue="")
+				if (InKlammenValue="KlammerLos" OR InKlammenValue="")
+				{
+					InKlammenValue:=""
 					if(setValue="")
+; {
 						Knoten:=Knoten.getElementsByTagName(Filter)[INr][NachDot]
+	; MsgBox %   A_LineFile "	" A_LineNumber "	"       Filter   "`n`n`n" INr "`n`n`n" NachDot
+; }
 					else
 						Knoten:=Knoten.getElementsByTagName(Filter)[INr][NachDot]	:= setValue
-				else if (InKlammenValue<>"")			
+				}
+				else ; if (InKlammenValue="InKlammern" OR InKlammenValue<>"" and InKlammenValue<>"InKlammern")			
+				{
+					if(InKlammenValue="InKlammern")
+						InKlammenValue:=""
 					if(setValue="")
+; {
 						Knoten:=Knoten.getElementsByTagName(Filter)[INr][NachDot]([InKlammenValue])
+	; MsgBox %   A_LineFile "	" A_LineNumber "	"       Filter   "`n`n`n" INr "`n`n`n" NachDot "`n`n`n" InKlammenValue
+; }
 					else
 						Knoten:=Knoten.getElementsByTagName(Filter)[INr][NachDot]([InKlammenValue])	:= setValue
+				}
 			}
 			else
 				Fehlermeldung:=true

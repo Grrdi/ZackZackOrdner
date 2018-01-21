@@ -890,17 +890,49 @@ ElementFilter(ByRef Knoten,FilterName="",Filter="",INr="",NachDot="",InKlammenVa
 	}
 	else if (FilterName="ID")
 	{
-		if(NachDot="" AND InKlammenValue="")
-			Knoten:=Knoten.getElementByID(Filter)
-		else if (NachDot<>"")
+		if(INr="")
 		{
-			if (InKlammenValue="")
-				Knoten:=Knoten.getElementByID(Filter)[NachDot]
+			if(NachDot="" AND InKlammenValue="")
+				Knoten:=Knoten.getElementByID(Filter)
+			else if (NachDot<>"")
+			{
+				if (InKlammenValue="KlammerLos" OR InKlammenValue="")
+				{
+					InKlammenValue:=""
+					if(setValue="")
+						Knoten:=Knoten.getElementByID(Filter)[NachDot]
+					else
+						Knoten:=Knoten.getElementByID(Filter)[NachDot]	:= setValue
+				}
+				else
+				{
+					InKlammenValue:=""
+					if(setValue="")
+						Knoten:=Knoten.getElementByID(Filter)[NachDot]([InKlammenValue])
+					else
+						Knoten:=Knoten.getElementByID(Filter)[NachDot]([InKlammenValue])	:= setValue
+				}
+			}
 			else
-				Knoten:=Knoten.getElementByID(Filter)[NachDot]([InKlammenValue])
+				Fehlermeldung:=true
 		}
 		else
-			Fehlermeldung:=true
+		{
+			if(NachDot="" AND InKlammenValue="")
+				Knoten:=Knoten.getElementByID(Filter)
+			else if (NachDot<>"")
+			{
+				if (InKlammenValue="" OR InKlammenValue="KlammerLos")
+				{
+					InKlammenValue:=""
+					Knoten:=Knoten.getElementByID(Filter)[NachDot]
+				}
+				else
+					Knoten:=Knoten.getElementByID(Filter)[NachDot]([InKlammenValue])
+			}
+			else
+				Fehlermeldung:=true
+		}
 	}
 	else if(FilterName="")
 	{

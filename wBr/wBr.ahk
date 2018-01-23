@@ -5,6 +5,7 @@
 ; https://msdn.microsoft.com/en-us/library/aa752084(v=vs.85).aspx
 ; HTML Befehlsuebersicht	http://www.webhinweis.de/html/html_tabelle.html	
 ; Danke IsNull	OOP Einfuehrung in deutsch	http://ahkscript.org/germans/forums/viewtopic.php?t=7884
+; https://ahkde.github.io/docs/commands/ComObjQuery.htm
 ; Mein erster ernsthafter Versuch, der Erstellung einer eigenen Class
 ;}	
 ; Man definiert mit Klassen, wie Objekte (Instanzen von Klassen) ausschauen, welche Daten sie enthalten und welche Methoden (Funktionalität) sie anbieten.
@@ -810,9 +811,35 @@ S1.History(1)
 Sleep 1000
 S1.Navigate("https://autohotkey.com/boards/viewtopic.php?f=7&t=41332")
 
+
+
+
+
+
+S2 := new wbr("IE_S2")
+; 
+; S1.GetSetOneOfAllTags("+ID=a4711/Tag=div","¬body|General|strong","outerHtml"),200
+; S1.setOnErrorExit(true)	; bei Fehler Thread beenden
+; S2 := new wb("IE_S2")		; paralele 2. Browser Sitzung
+; S2.Visible(1)
+; S1.Navigate("http://autohotkey.com")
+S2.Navigate("https://www.uhrzeit.org/atomuhr.php")
+
+
+AtomZeit:=S2.GetSetOneOfAllTags("/ID=anzeige_zeit",,"innerText","Klammerlos")
+MsgBox,0,% A_LineFile "[" A_LineNumber "]" ,%AtomZeit% " von https://www.uhrzeit.org/atomuhr.php", 5
+MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","General","innerhtml",,"<marquee><mark>temporaere Aenderungs-Zeit " AtomZeit " G e n e r a <i>l</i> :   G e n e r a <i>l</i> :   G e n e r a <i>l</i></mark></marquee>"),12
+AtomZeit:=S2.GetSetOneOfAllTags("/ID=anzeige_zeit",,"innerText","Klammerlos")
+MsgBox,0,% A_LineFile "[" A_LineNumber "]" ,%AtomZeit% " von https://www.uhrzeit.org/atomuhr.php", 5
+MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("+strong","G e n e r a","innerhtml",,"<marquee><mark>2. temporaere Aenderungs-Zeit " AtomZeit " G e n e r a <i>l</i> :  : <i>l</i> a r e n e G   G e n e r a <i>l</i></mark></marquee>"),10
+S2.Visible(1)
+AtomZeit:=S2.GetSetOneOfAllTags("+ID=anzeige_zeit/Tag=span",,"innerText","Klammerlos")	; das + vorne am ersten Parameter kann beim Einrichten helfen. Die Markierungen sind schlussendlich bei weggelassenem + nicht zu sehen weil nicht vorhanden.
+
+
+
 ; MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags(/"Tag=html")
-MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","General","innerhtml",,"<marquee><mark>G e n e r a <i>l</i> :   G e n e r a <i>l</i> :   G e n e r a <i>l</i></mark></marquee>"),10
-MsgBox % S1.GetSetOneOfAllTags("+ID=profile188328/Tag=a","nnnik","click","InKlammern")
+; MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","General","innerhtml",,"<marquee><mark>G e n e r a <i>l</i> :   G e n e r a <i>l</i> :   G e n e r a <i>l</i></mark></marquee>"),10
+; MsgBox % S1.GetSetOneOfAllTags("+ID=profile188328/Tag=a","nnnik","click","InKlammern")
 ; MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("+strong","General","OuterHtml",,"General",0),10
 ; MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","General","innerhtml.selectedText",,"General",0),10
 ; MsgBox % S1.GetSetOneOfAllTags("+ID=profile188328/Tag=a",,"outerHtml")

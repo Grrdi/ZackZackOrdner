@@ -784,11 +784,13 @@ else
 	S1.Visible(1)
 	NewTab:=true
 }
+S1.Navigate("http://www.dropzonejs.com/#try-it-out")
+
 ; S1.GetSetOneOfAllTags("+ID=a4711/Tag=div","¬body|General|strong","outerHtml"),200
 ; S1.setOnErrorExit(true)	; bei Fehler Thread beenden
 ; S2 := new wb("IE_S2")		; paralele 2. Browser Sitzung
 ; S2.Visible(1)
-S1.Navigate("http://autohotkey.com")
+; S1.Navigate("http://autohotkey.com")
 
 MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetElementsHtmlByTagName("a",,"outerHtml",0),6
 MsgBox,0,% A_LineFile "[" A_LineNumber "]",  % S1.getUrl() "	" S1.getLocationName() "	alle Links:`r`n" S1.getAllLinks(),5
@@ -810,6 +812,7 @@ MsgBox,0,% A_LineFile "[" A_LineNumber "]",  % S1.getUserAgent(),4
 S1.History(1)
 Sleep 1000
 S1.Navigate("https://autohotkey.com/boards/viewtopic.php?f=7&t=41332")
+
 
 
 

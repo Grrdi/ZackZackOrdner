@@ -113,6 +113,15 @@ class wBr {
 		catch
 			this.ifOnErrorDoExit(this.OnError.Exit)
 	}
+	setSourceCode(SourceCode){
+		try{
+			this.com.document.documentElement.innerHtml := SourceCode
+			this.NotBusy()
+			return 
+		}
+		catch
+			this.ifOnErrorDoExit(this.OnError.Exit)
+	}
 	getAllText(){
 		try{
 			AllText:=this.com.document.documentElement.innerText ; Get All text on page
@@ -172,6 +181,23 @@ class wBr {
 					OuterHTML:=StrReplace(OuterHTML,"`r")
 					OuterHTML:=StrReplace(OuterHTML,"`t")
 					Msg .= A_Index-1 A_Space A_Space A_Space Link A_Tab OuterHTML "`r`n" ; add items to the msg list
+				}
+			this.NotBusy()
+			return Msg
+		}
+		catch
+			this.ifOnErrorDoExit(this.OnError.Exit)
+	}
+	getAllLinksHtml(){
+		try{
+			Links := this.Com.Document.Links ; collection of hyperlinks on the page
+			Loop % Links.Length ; Loop through links
+				If ((Link := Links[A_Index-1].InnerText) != "") { ; if the link is not blank
+					(OuterHTML := Links[A_Index-1].OuterHTML)  ; Grab outerHTML for each link
+					OuterHTML:=StrReplace(OuterHTML,"`n")
+					OuterHTML:=StrReplace(OuterHTML,"`r")
+					OuterHTML:=StrReplace(OuterHTML,"`t")
+					Msg .= OuterHTML "`r`n" ; add items to the msg list
 				}
 			this.NotBusy()
 			return Msg
@@ -831,10 +857,12 @@ S2.Navigate("https://www.uhrzeit.org/atomuhr.php")
 
 AtomZeit:=S2.GetSetOneOfAllTags("/ID=anzeige_zeit",,"innerText","Klammerlos")
 MsgBox,0,% A_LineFile "[" A_LineNumber "]" ,%AtomZeit% " von https://www.uhrzeit.org/atomuhr.php", 5
-MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","General","innerhtml",,"<marquee><mark>temporaere Aenderungs-Zeit " AtomZeit " G e n e r a <i>l</i> :   G e n e r a <i>l</i> :   G e n e r a <i>l</i></mark></marquee>"),12
+; MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","General","innerhtml",,"<marquee><mark><svg><circle cx='50' cy='50' r='40' stroke='black' stroke-width='3' fill='red' /> <rect style='fill:#008000;stroke-width:5' id='rect3698' width='250'  height='250'  x='300'  y='-250' /></svg></mark></marquee>"),12
+MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","General","innerhtml",,"<marquee><svg height='300' width='100'><rect style='stroke-width:5' width='100'  height='300'  x='0'  y='0' /><circle cx='50' cy='255'  r='40' stroke='black' stroke-width='3' fill='green' /><circle cx='50' cy='150'  r='40' stroke='black' stroke-width='3' fill='grey' /><circle cx='50' cy='45'  r='40' stroke='black' stroke-width='3' fill='grey' /></svg><mark>temporaere Aenderungs-Zeit " AtomZeit " G e n e r a <i>l</i> :   G e n e r a <i>l</i> :   G e n e r a <i>l</i></mark><svg height='100' width='100'><rect style='fill:#008000;stroke-width:5' id='rect3698' width='80'  height='80'  x='0'  y='-50' /></svg></marquee>"),12
+;  MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","General","innerhtml",,"<marquee>" SvgAmpel()   "<mark>temporaere Aenderungs-Zeit " AtomZeit " G e n e r a <i>l</i> :   G e n e r a <i>l</i> :   G e n e r a <i>l</i></mark>" SvgAmpel("red",400) A_Space SvgAmpel("yellow",400) A_Space SvgAmpel("green",400)  "</marquee>"),12
 AtomZeit:=S2.GetSetOneOfAllTags("/ID=anzeige_zeit",,"innerText","Klammerlos")
 MsgBox,0,% A_LineFile "[" A_LineNumber "]" ,%AtomZeit% " von https://www.uhrzeit.org/atomuhr.php", 5
-MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("+strong","G e n e r a","innerhtml",,"<marquee><mark>2. temporaere Aenderungs-Zeit " AtomZeit " G e n e r a <i>l</i> :  : <i>l</i> a r e n e G   G e n e r a <i>l</i></mark></marquee>"),10
+MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","G e n e r a","innerhtml",,"<marquee><mark>2. temporaere Aenderungs-Zeit " AtomZeit " G e n e r a <i>l</i> :  : <i>l</i> a r e n e G   G e n e r a <i>l</i></mark></marquee>"),10
 S2.Visible(1)
 AtomZeit:=S2.GetSetOneOfAllTags("+ID=anzeige_zeit/Tag=span",,"innerText","Klammerlos")	; das + vorne am ersten Parameter kann beim Einrichten helfen. Die Markierungen sind schlussendlich bei weggelassenem + nicht zu sehen weil nicht vorhanden.
 
@@ -1051,3 +1079,5 @@ DoChatch(Exeption,AddAnzahlFehler:=true){	; wird noch bei den Try ... Catch Befe
 ; https://autohotkey.com/boards/viewtopic.php?f=5&t=28053	
 ; 	erzeugt Listen: vNeedle1 = href="#	vNeedle2 = id="	vNeedle3 = name="
 ; https://getawesomeness.herokuapp.com/get/autohotkey	Linksammelung "genialer" AutoHotKey Libraries
+
+*/

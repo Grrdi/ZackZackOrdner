@@ -52,57 +52,77 @@ class wBr {
 		{
 			try
 				this.Com.Quit()    ; bringt keine Fehlermeldung, ich sehe aber die Wirkung im TaskManager. Danke nnnik
+			catch e
+				this.OnErrorDo(e)
 		}
 		if ExitThreadOnClose
 			Exit
     }
+	setFlags(AddressBar="",StatusBar="",ToolBar="")  {
+		if (AddressBar<>"")
+		this.com.AddressBar:=AddressBar
+		if (StatusBar<>"")
+		this.com.StatusBar:=StatusBar
+		if (ToolBar<>"")
+		this.com.ToolBar:=ToolBar
+	}
+	setWinPosses(Top="",Left="",Width="",Height="")  {
+		if Top
+		this.com.Top:=Top
+		if Left
+		this.com.Left:=Left
+		if Width
+		this.com.Width:=Width
+		if Height
+		this.com.Height:=Height
+	}
 	getUrl() {
 		try
 			return this.com.LocationURL ;grab current url
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	getUrlAfterQuestionMark() {
 		try
 			return this.com.document.location.Search ; gets substring of URL following question mark
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	getUrlPort() {
 		try
 			return this.com.document.location.port
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	getUrlPathname() {		
 		try
 			return this.com.document.location.pathname ; returns pathname
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	getLocationName() {
 		try
 			return this.com.LocationName ; grab page Titlerite
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	getUrlHostName() {
 		try
 			return this.com.document.location.hostname ; returns host
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)
 	}
 	getUrlAfterHash() {
 		try
 			return this.com.document.location.hash ; retreives everyting from the # on
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)
 	}
 	getUserAgent() {
 		try
 			return this.com.document.parentWindow.navigator.userAgent ; Get User Agent
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	getSourceCode(){
 		try{
@@ -110,8 +130,8 @@ class wBr {
 			this.NotBusy()
 			return SourceCode
 		}
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	setSourceCode(SourceCode){
 		try{
@@ -119,8 +139,8 @@ class wBr {
 			this.NotBusy()
 			return 
 		}
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	getAllText(){
 		try{
@@ -128,14 +148,14 @@ class wBr {
 			this.NotBusy()
 			return AllText
 		}
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	getUrlProtocol(){
 		try
 			return this.com.document.location.protocol ; retreives the protocol (http, https, etc)
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	getWinHwnd() {
 		return this.WinHwnd
@@ -165,13 +185,13 @@ class wBr {
 			this.NotBusy()
 			return
 		}
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	getAllLinks(){
 		try{
 			Links := this.Com.Document.Links ; collection of hyperlinks on the page
-			Loop % Links.Length ; Loop through links
+			Loop % Links.Length { ; Loop through links
 				If ((Link := Links[A_Index-1].InnerText) != "") { ; if the link is not blank
 					(OuterHTML := Links[A_Index-1].OuterHTML)  ; Grab outerHTML for each link
 					Link:=StrReplace(Link,"`n")
@@ -182,16 +202,17 @@ class wBr {
 					OuterHTML:=StrReplace(OuterHTML,"`t")
 					Msg .= A_Index-1 A_Space A_Space A_Space Link A_Tab OuterHTML "`r`n" ; add items to the msg list
 				}
+			}
 			this.NotBusy()
 			return Msg
 		}
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	getAllLinksHtml(){
 		try{
 			Links := this.Com.Document.Links ; collection of hyperlinks on the page
-			Loop % Links.Length ; Loop through links
+			Loop % Links.Length { ; Loop through links
 				If ((Link := Links[A_Index-1].InnerText) != "") { ; if the link is not blank
 					(OuterHTML := Links[A_Index-1].OuterHTML)  ; Grab outerHTML for each link
 					OuterHTML:=StrReplace(OuterHTML,"`n")
@@ -199,11 +220,12 @@ class wBr {
 					OuterHTML:=StrReplace(OuterHTML,"`t")
 					Msg .= OuterHTML "`r`n" ; add items to the msg list
 				}
+			}
 			this.NotBusy()
 			return Msg
 		}
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)	
 	}
 	getParent(Obj,Tiefe="6") {
 									; this.Com.document.getElementsByTagName(TagP)[0].getElementsByTagName(Tag)[0]...  ergibt auch eine Vater-Beziehung 
@@ -224,13 +246,19 @@ class wBr {
 	getParents(Obj,Tiefe="30",quick="1") {
 		Parents:={}
 		ParentKnoten:=Obj
-		ParentTagName:=ParentKnoten.TagName
+		try
+			ParentTagName:=ParentKnoten.TagName
+		catch e
+			this.OnErrorDo(e)
 		if(ParentTagName="html" OR ParentTagName="")
-			return
+ 			return
 		ParentAnz:=0
 		Loop, % Tiefe {
 			; MsgBox % ParentKnoten.OuterHTML
-			ParentKnoten:=ParentKnoten.ParentNode
+			try
+				ParentKnoten:=ParentKnoten.ParentNode
+			catch e
+				this.OnErrorDo(e)
 			ParentTagName:=ParentKnoten.TagName
 			ParentPath:=ParentTagName "/" ParentPath
 			++ParentAnz
@@ -296,13 +324,13 @@ class wBr {
 		Loop % Anz
 		{
 			TagIndex:=A_Index - 1
-try
+			try
 				Parents := this.getParents(Alle[TagIndex])
-catch
-{
-	; moegliche Ursache: Zugriff verweigert
-	continue
-}
+			catch e {
+			; 	this.OnErrorDo(e)
+				; moegliche Ursache: Zugriff verweigert
+				continue
+			}
 
 			if quick
 			{
@@ -420,12 +448,16 @@ catch
 						INr:=TagIndexVorrang
 				}
 			}
-			Alle := this.Com.document
+			try
+				Alle := this.Com.document
+			catch e
+				this.OnErrorDo(e)
 			Loop 2
 				ElementFilter(Alle,getEl%A_Index%[1],getEl%A_Index%[2],INr)
 			try
 				Anz:=Alle.Length
-
+			; catch e
+			;	this.OnErrorDo(e)
 			gesAnz:=0
 			indexFuerGes:=-1
 			if (Suchliste="")
@@ -436,6 +468,8 @@ catch
 				TagIndex:=A_Index - 1
 			try
 				All := Alle[TagIndex].OuterHTML
+			catch e
+				this.OnErrorDo(e)
 				If ((All) != "") { ; if the Tag is not blank
 					Funde:=0
 					PlusMinus1:=1
@@ -509,6 +543,8 @@ catch
 					TagAnzeige := temp.outerHtml
 					try
 						All := tempZwischen.OuterHTML
+					; catch e
+					;	this.OnErrorDo(e)
 					All_Anzeige := A_Tab SubStr(StrReplace(StrReplace(All,"`n",A_Space,All),"`t",A_Space,All),1,1500)
 					gesAnzeige:=StrReplace(ges,A_Tab DieserAnsichtTagIndex A_Tab,A_Tab "#" DieserAnsichtTagIndex "#" A_Tab,markiert)
 					if (NOT markiert)
@@ -619,8 +655,8 @@ catch
 			}
 			; this.NotBusy()
 		}
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)
 	}
 	FeldEintrag(SuchString,ID:="",Name:="",ClassName:="",TagName:="")	{
 		try
@@ -630,6 +666,8 @@ catch
 			this.NotBusy()
 			SuchStringProbe:=this.Com.document.getElementByID(ID).Value ;Unique ID-with dashes	; eingetragenen Wet fuer Probe auslesen
 		}
+		catch e
+			this.OnErrorDo(e)
 		if (SuchStringProbe=SuchString)
 			Erfolreich.="ID = " ID
 		else
@@ -649,6 +687,8 @@ catch
 						break
 					}
 				}
+				; catch e
+				; 	this.OnErrorDo(e)
 			}
 			if (SuchStringProbe=SuchString)
 				Erfolreich.="Name[" NullIndex "] = " Name
@@ -666,6 +706,8 @@ catch
 							break
 						}
 					}
+					; catch e
+					;	this.OnErrorDo(e)
 				}
 				if (SuchStringProbe=SuchString)
 					Erfolreich.="ClassName[" NullIndex "] = " ClassName
@@ -681,6 +723,8 @@ catch
 							if (SuchStringProbe=SuchString)
 								break
 						}
+						; catch e
+						;	this.OnErrorDo(e)
 					}
 					if (SuchStringProbe=SuchString)
 						Erfolreich.="TagName[" NullIndex "] = " TagName
@@ -702,16 +746,16 @@ catch
 		try
 			this.Com.Visible := flag	
 			; this.NotBusy() ; Achtung, darf nicht rein. Ohne visible kein busy-Ende !!!!!!!!!!!!!!!!!!
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)
 	}
 	Navigate(Url){
 		try{
 			this.Com.Navigate(Url)
 			this.NotBusy()
 		}
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)
 	}
 	setOnErrorExit(Flag=0){
 		this.OnError.Exit := Flag
@@ -723,14 +767,14 @@ catch
 			this.Com.document.parentWindow.history.go(Number) ; if Number is negativ Go Backward one page
 			this.NotBusy()
 		}
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)
 	}
 	HistoryLen(){
 		try
 			return this.Com.document.parentWindow.history.length	
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)
 	}
 	Help(Methode){
 		if(Methode="")
@@ -743,8 +787,8 @@ catch
 			while this.Com.busy or this.Com.ReadyState != 4	
 				Sleep 10	
 		}
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)
 	}
  	CloseTab(force=1) {		; wirkung wie WebBroserObjekt := "" 	bei 1 ohne Rueckfrage
 		if force
@@ -762,9 +806,37 @@ ControlClick,Button1,Windows Internet Explorer ahk_class #32770
 		try{
 			this.Com.document.parentWindow.window.Close()		; Reiter Schliessen mit Rueckfrage
 		}
-		catch
-			this.ifOnErrorDoExit(this.OnError.Exit)
+		catch e
+			this.OnErrorDo(e)
+			; this.ifOnErrorDoExit(this.OnError.Exit)
 	}
+	OnErrorDo(e){	; Diese Funktion hier ist nur fuer den Class-internen Aufruf vorgesehen.
+		Global ExternalToolTipPath
+		HK="
+		if (ExternalToolTipPath="")
+			ExternalToolTipPath:=A_ScriptDir "\ExternalTooltip.ahk"
+		MouseGetPos,MouseX,MouseY,MouseOverWin,MouseOverControl
+		ControlGetFocus,FocussedControl,A
+		Zustand:=a_ "Letzte(r)- FehlerNr|Hotkey|UserAktion vor: " A_LastError "|" A_PriorHotkey "|"  A_TimeIdlePhysical "`r`n" A_ScriptName A_Space A_LineNumber A_Tab "meldet im Zustand:`r`nHotkey: " A_ThisHotkey A_Tab "Label: " A_ThisLabel A_Tab "Func: "A_ThisFunc A_Tab "Menue|Item|Pos: " A_ThisMenu "|" A_ThisMenuItem "|" A_ThisMenuItemPos A_Tab "FocussedControl: " FocussedControl	"`r`nMaus: [" MouseX "`," MouseY "]Over: " MouseOverWin "|" MouseOverControl A_Tab "Caret: " A_CaretX "`," A_CaretY
+		FehlerMeldung:=Zustand  "`r`n`r`nFile: " e.File A_Tab "Line: " e.Line "`r`n" "What: " e.What A_Tab "Message: " e.Message A_Tab "Extra: " e.Extra
+		StringTrimRight,ExternalToolTipPathOhneExt,ExternalToolTipPath,3
+		if (ExternalToolTipPathOhneExt="")
+			ExternalToolTipPathOhneExt:="Gibts`tNicht"
+		IfExist % ExternalToolTipPathOhneExt "*"
+		{
+			IfExist % ExternalToolTipPathOhneExt "exe"
+				Run, % HK ExternalToolTipPathOhneExt "exe" HK A_Space HK ExternalToolTipPath HK A_Space HK FehlerMeldung HK
+			else
+			{
+				IfExist % ExternalToolTipPath
+					Run, % HK ExternalToolTipPath HK A_Space HK FehlerMeldung HK
+			}
+			SoundBeep, 400,115
+		}
+		else
+			MsgBox % FehlerMeldung
+	}
+	/*
 	ifOnErrorDoExit(Flag){	; Diese Funktion hier ist nur fuer den Class-internen Aufruf vorgesehen.
 		if this.OnError.Exit{
 			if IsObject(this.Com){
@@ -774,6 +846,7 @@ ControlClick,Button1,Windows Internet Explorer ahk_class #32770
 			Exit					; aktuellen Thread beenden
 		}
 	}
+	*/
 	; Folgende Funktion (danke Glines) ist hier fuer den Class-internen Aufruf vorgesehen.
 		;************Pointer to Open IE Window******************
 	WBGet(WinTitle="ahk_class IEFrame", Svr#=1) {               ;// based on ComObjQuery docs
@@ -811,13 +884,13 @@ else
 	NewTab:=true
 }
 S1.Navigate("http://www.dropzonejs.com/#try-it-out")
-
+S1.setWinPosses(3,3,A_ScreenWidth/2,A_ScreenHeight-70)
 ; S1.GetSetOneOfAllTags("+ID=a4711/Tag=div","¬body|General|strong","outerHtml"),200
 ; S1.setOnErrorExit(true)	; bei Fehler Thread beenden
 ; S2 := new wb("IE_S2")		; paralele 2. Browser Sitzung
 ; S2.Visible(1)
 ; S1.Navigate("http://autohotkey.com")
-
+S1.setFlags(1)
 MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetElementsHtmlByTagName("a",,"outerHtml",0),6
 MsgBox,0,% A_LineFile "[" A_LineNumber "]",  % S1.getUrl() "	" S1.getLocationName() "	alle Links:`r`n" S1.getAllLinks(),5
 MsgBox,0,% A_LineFile "[" A_LineNumber "]",  % S1.getUrl() "	" S1.getLocationName() "	GesammtText:`r`n" S1.getAllText(),5
@@ -838,7 +911,7 @@ MsgBox,0,% A_LineFile "[" A_LineNumber "]",  % S1.getUserAgent(),4
 S1.History(1)
 Sleep 1000
 S1.Navigate("https://autohotkey.com/boards/viewtopic.php?f=7&t=41332")
-
+S1.setFlags(0,0,0)
 
 
 
@@ -864,6 +937,7 @@ AtomZeit:=S2.GetSetOneOfAllTags("/ID=anzeige_zeit",,"innerText","Klammerlos")
 MsgBox,0,% A_LineFile "[" A_LineNumber "]" ,%AtomZeit% " von https://www.uhrzeit.org/atomuhr.php", 5
 MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","G e n e r a","innerhtml",,"<marquee><mark>2. temporaere Aenderungs-Zeit " AtomZeit " G e n e r a <i>l</i> :  : <i>l</i> a r e n e G   G e n e r a <i>l</i></mark></marquee>"),10
 S2.Visible(1)
+S2.setWinPosses(3,A_ScreenWidth/2,A_ScreenWidth/2,A_ScreenHeight-70)
 AtomZeit:=S2.GetSetOneOfAllTags("+ID=anzeige_zeit/Tag=span",,"innerText","Klammerlos")	; das + vorne am ersten Parameter kann beim Einrichten helfen. Die Markierungen sind schlussendlich bei weggelassenem + nicht zu sehen weil nicht vorhanden.
 
 

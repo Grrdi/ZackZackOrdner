@@ -66,7 +66,7 @@ class wBr {
 		if (ToolBar<>"")
 		this.com.ToolBar:=ToolBar
 	}
-	setWinPosses(Top="",Left="",Width="",Height="")  {
+	setWinPosses(Left="",Top="",Width="",Height="")  {
 		if Top
 		this.com.Top:=Top
 		if Left
@@ -75,6 +75,14 @@ class wBr {
 		this.com.Width:=Width
 		if Height
 		this.com.Height:=Height
+	}
+	getCom() {
+		return this.com
+	}
+	getDocument() {
+		 return this.com.Document	; keine Wirkungss
+		; return this.com.Windows.Document 	; Fehlermeldung
+		; return this.com.Window.Document 	; Unbekannter Name
 	}
 	getUrl() {
 		try
@@ -937,7 +945,7 @@ AtomZeit:=S2.GetSetOneOfAllTags("/ID=anzeige_zeit",,"innerText","Klammerlos")
 MsgBox,0,% A_LineFile "[" A_LineNumber "]" ,%AtomZeit% " von https://www.uhrzeit.org/atomuhr.php", 5
 MsgBox,0,% A_LineFile "[" A_LineNumber "]", % S1.GetSetOneOfAllTags("strong","G e n e r a","innerhtml",,"<marquee><mark>2. temporaere Aenderungs-Zeit " AtomZeit " G e n e r a <i>l</i> :  : <i>l</i> a r e n e G   G e n e r a <i>l</i></mark></marquee>"),10
 S2.Visible(1)
-S2.setWinPosses(3,A_ScreenWidth/2,A_ScreenWidth/2,A_ScreenHeight-70)
+S2.setWinPosses(A_ScreenWidth/2,A_ScreenWidth/2,3,A_ScreenHeight-70)
 AtomZeit:=S2.GetSetOneOfAllTags("+ID=anzeige_zeit/Tag=span",,"innerText","Klammerlos")	; das + vorne am ersten Parameter kann beim Einrichten helfen. Die Markierungen sind schlussendlich bei weggelassenem + nicht zu sehen weil nicht vorhanden.
 
 

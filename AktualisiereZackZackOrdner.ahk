@@ -1,7 +1,7 @@
 ; dieses Script installiert oder aktualisiert ZZO in das hier verwendete Verzeichnis und startet es.
 url=https://github.com/Grrdi/ZackZackOrdner/archive/master.zip
-DownLoadPfad=%A_ScriptDir%\ZackZackOrdner-master.zip
 DownLoadOrdner=%A_ScriptDir%\ZackZackOrdner-master
+DownLoadPfad=%A_ScriptDir%\ZackZackOrdner-master.zip
 IfExist %DownLoadPfad%
 	FileDelete,%DownLoadPfad%
 IfExist %DownLoadOrdner%
@@ -9,12 +9,37 @@ IfExist %DownLoadOrdner%
 UrlDownloadToFile, %URL%, %DownLoadPfad%
 if ErrorLevel
 {
+	loop,%A_ScriptDir%\*.zip,FR
+	{
+		if(A_LoopFileName="ZackZackOrdner-master.zip")
+		{
+			MsgBox, 262435, Alter Download gefunden, alten Download %A_LoopFileFullPath% behalten?`n`nJa = 		Versionieren`nNein = 		Löschen`nAbbrechen = 	Skript beenden
+			IfMsgBox,Yes
+				FileMove,%A_LoopFileFullPath%,%A_LoopFileDir%\ZackZackOrdner-master[%A_Now%].zip
+			IfMsgBox,No
+				FileRecycle,%A_LoopFileFullPath%
+			IfMsgBox,Cancel
+				ExitApp
+		}
+	}
+
 	Clipboard:=DownLoadPfad
-	FileCreateDir,%DownLoadOrdner%
+; 	FileCreateDir,%DownLoadOrdner%			; darf nicht
 	Run %url%
-	MsgBox, 262196, Fehler beim Automatischen Download., Der Download wurde fuer die manuelle Weiterverabeitung gestartet. Dieser ist unter %DownLoadPfad% zu speichern.`n`nErst wenn erledigt Ja klicken!`n`nHinweis: Der DownLoadPfad befindet sich  im Clipboard.
+	Run %A_ScriptDir%
+	MsgBox, 262196, Fehler beim Automatischen Download., Der Download wurde fuer die manuelle Weiterverabeitung gestartet. Dieser ist unter %DownLoadPfad% zu speichern.`n`nErst wenn erledigt (Das heist im soeben geöffneten Explorerfenster zu sehen) Ja klicken!`n`nHinweis: Der DownLoadOrdnerPfad befindet sich  im Clipboard.
 	IfMsgBox,No
 		ExitApp
+	IfNotExist %DownLoadPfad%
+	{
+		loop,%A_ScriptDir%\ZackZackOrdner-master*.zip,FR
+		{
+			if(InStr(A_LoopFileName,"ZackZackOrdner-master") and A_LoopFileExt="zip" and not InStr(A_LoopFileName,"]"))
+			{
+				DownLoadPfad:=A_LoopFileFullPath
+			}
+		}
+	}
 	IfNotExist %DownLoadPfad%
 	{
 		MsgBox, 262160, Fehler beim Download, Beim Herunterladen ist ein Fehler aufgetreten.`nUrsache koennte sein`, dass Kein Netwerk vorhanden oder dieses Skript nicht mit Ihrer Proxy-Umgebung zurecht kommt.`n`nAbbruch

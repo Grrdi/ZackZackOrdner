@@ -811,24 +811,10 @@ class wBr {
 				ElementFilter(Alle,getEl%A_Index%[1],getEl%A_Index%[2],INr)
 			try
 				Anz:=Alle.Length
-			; catch e
-			;	this.OnErrorDo(e)
-			;~ gesAnz:=0
-			;~ indexFuerGes:=-1
-			;~ if (Suchliste="")
-				;~ AddKor:=0.01
-			;~ else
-				;~ AddKor:=0
 			if(AbNr<0)
 			{
 				Loop % Anz { ; Loop through Tags
 					TagIndex:=A_Index - 1
-					;~ try
-						;~ All := Alle[TagIndex].OuterHTML
-					;~ catch e
-						;~ this.OnErrorDo(e)
-					; All.parentNode.scrollIntoView()		; in den sichtbaren Bereich damit
-					; Alle[TagIndex].parentNode.scrollIntoView()		; in den sichtbaren Bereich damit
 					Alle[TagIndex].scrollIntoView()		; in den sichtbaren Bereich damit
 					ControlGetFocus, Steuerelement, A
 					loop 5
@@ -846,14 +832,7 @@ class wBr {
 			else
 			{
 				Alle[AbNr].scrollIntoView()		; in den sichtbaren Bereich damit
-				
-
 			}
-	; öööööööööööööööööööööö
-		
-				
-			
-		
 	}
 	Navigate(Url){
 		try{

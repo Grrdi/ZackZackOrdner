@@ -757,6 +757,104 @@ class wBr {
 		catch e
 			this.OnErrorDo(e)
 	}
+	ScrollView(getElementsBy="",AbNr="-4000"){		; AbNr negativ Wartezeit zwischen den Scrolls, AbNr positiv Elemnetnummer bei 0 angefangen
+			if (SubStr(getElementsBy,1,1)="+") {	; fuer Diashows Instanz.ScrollView("img",-3000)
+				Info:=true 
+				getElementsBy:=SubStr(getElementsBy,2)
+			}
+			B:={}
+			if (InStr(getElementsBy,"/"))
+			{											; +ID=a4711/Tag=div
+				getElZu := StrSplit(getElementsBy,"/")
+				Loop % getElZu.MaxIndex()
+				{
+					getEl%A_Index% := StrSplit(getElZu[A_Index],"=")
+					
+				}
+			}
+			else
+			{
+				if (getElementsBy="")
+					getElementsBy:= "*"
+				if (InStr(getElementsBy,"="))
+				{											; +ID=a4711/Tag=div
+					getEl := StrSplit(getElementsBy,"=")
+					getE2[1] := 	, getE2[2] :=
+				}
+				else
+				{
+					getEl1:={}			, getEl2:={}
+					getEl1[1] :=  		, getEl1[2] := 
+					getEl2[1] := "Tag"	, getEl2[2] := getElementsBy
+				}
+			}
+			if (INr="")
+				INr:="free"
+			Loop 2
+			{
+				if (getE%A_Index%[1]="ID")
+					INr:="free"
+				else if (getE%A_Index%[1]="Tag"){
+					if (TagIndexVorrang="")
+						INr:="free"
+					else
+						INr:=TagIndexVorrang
+				}
+			}
+			try
+			{
+				Alle := this.Com.document
+			}
+			catch e
+				this.OnErrorDo(e)
+			Loop 2
+				ElementFilter(Alle,getEl%A_Index%[1],getEl%A_Index%[2],INr)
+			try
+				Anz:=Alle.Length
+			; catch e
+			;	this.OnErrorDo(e)
+			;~ gesAnz:=0
+			;~ indexFuerGes:=-1
+			;~ if (Suchliste="")
+				;~ AddKor:=0.01
+			;~ else
+				;~ AddKor:=0
+			if(AbNr<0)
+			{
+				Loop % Anz { ; Loop through Tags
+					TagIndex:=A_Index - 1
+					;~ try
+						;~ All := Alle[TagIndex].OuterHTML
+					;~ catch e
+						;~ this.OnErrorDo(e)
+					; All.parentNode.scrollIntoView()		; in den sichtbaren Bereich damit
+					; Alle[TagIndex].parentNode.scrollIntoView()		; in den sichtbaren Bereich damit
+					Alle[TagIndex].scrollIntoView()		; in den sichtbaren Bereich damit
+					ControlGetFocus, Steuerelement, A
+					loop 5
+						SendMessage, 0x114, 0, 0, %Steuerelement%, A
+					warte:=-AbNr/1000
+					KeyWait,Esc,D T%warte%
+					; KeyWait,Esc,D T3
+					if NOT ErrorLevel
+						break   ; ToolTip % ErrorLevel
+					; sleep -AbNr
+				}
+				return Anz
+				
+			}
+			else
+			{
+				Alle[AbNr].scrollIntoView()		; in den sichtbaren Bereich damit
+				
+
+			}
+	; öööööööööööööööööööööö
+		
+				
+			
+		
+	}
 	Navigate(Url){
 		try{
 			this.Com.Navigate(Url)
@@ -891,6 +989,19 @@ else
 	S1.Visible(1)
 	NewTab:=true
 }
+/*
+S1.Navigate("C:\Users\Gerd\AppData\Local\Temp\ZzoAnE5.htm")
+
+S1.ScrollView("img",70)
+sleep 4000
+S1.ScrollView("img",74)
+sleep 4000
+S1.ScrollView("img",78)
+sleep 4000
+S1.ScrollView("img",-4500)
+MsgBox ende
+ExitApp
+*/
 S1.Navigate("http://www.dropzonejs.com/#try-it-out")
 S1.setWinPosses(3,3,A_ScreenWidth/2,A_ScreenHeight-70)
 ; S1.GetSetOneOfAllTags("+ID=a4711/Tag=div","¬body|General|strong","outerHtml"),200

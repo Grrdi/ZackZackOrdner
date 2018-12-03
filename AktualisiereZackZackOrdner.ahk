@@ -6,44 +6,48 @@ IfExist %DownLoadPfad%
 	FileDelete,%DownLoadPfad%
 IfExist %DownLoadOrdner%
 	FileRemoveDir, %DownLoadOrdner%,1 
-UrlDownloadToFile, %URL%, %DownLoadPfad%
-if ErrorLevel
+Download_File_XMLHTTP("https://codeload.github.com/Grrdi/ZackZackOrdner/zip/master","ZackZackOrdner-master.zip")
+IfNotExist %DownLoadPfad%
 {
-	loop,%A_ScriptDir%\*.zip,FR
+	UrlDownloadToFile, %URL%, %DownLoadPfad%
+	if ErrorLevel
 	{
-		if(A_LoopFileName="ZackZackOrdner-master.zip")
+		loop,%A_ScriptDir%\*.zip,FR
 		{
-			MsgBox, 262435, Alter Download gefunden, alten Download %A_LoopFileFullPath% behalten?`n`nJa = 		Versionieren`nNein = 		Löschen`nAbbrechen = 	Skript beenden
-			IfMsgBox,Yes
-				FileMove,%A_LoopFileFullPath%,%A_LoopFileDir%\ZackZackOrdner-master[%A_Now%].zip
-			IfMsgBox,No
-				FileRecycle,%A_LoopFileFullPath%
-			IfMsgBox,Cancel
-				ExitApp
-		}
-	}
-
-	Clipboard:=DownLoadPfad
-; 	FileCreateDir,%DownLoadOrdner%			; darf nicht
-	Run %url%
-	Run %A_ScriptDir%
-	MsgBox, 262196, Fehler beim Automatischen Download., Der Download wurde fuer die manuelle Weiterverabeitung gestartet. Dieser ist unter %DownLoadPfad% zu speichern.`n`nErst wenn erledigt (Das heist im soeben geöffneten Explorerfenster zu sehen) Ja klicken!`n`nHinweis: Der DownLoadOrdnerPfad befindet sich  im Clipboard.
-	IfMsgBox,No
-		ExitApp
-	IfNotExist %DownLoadPfad%
-	{
-		loop,%A_ScriptDir%\ZackZackOrdner-master*.zip,FR
-		{
-			if(InStr(A_LoopFileName,"ZackZackOrdner-master") and A_LoopFileExt="zip" and not InStr(A_LoopFileName,"]"))
+			if(A_LoopFileName="ZackZackOrdner-master.zip")
 			{
-				DownLoadPfad:=A_LoopFileFullPath
+				MsgBox, 262435, Alter Download gefunden, alten Download %A_LoopFileFullPath% behalten?`n`nJa = 		Versionieren`nNein = 		Löschen`nAbbrechen = 	Skript beenden
+				IfMsgBox,Yes
+					FileMove,%A_LoopFileFullPath%,%A_LoopFileDir%\ZackZackOrdner-master[%A_Now%].zip
+				IfMsgBox,No
+					FileRecycle,%A_LoopFileFullPath%
+				IfMsgBox,Cancel
+					ExitApp
 			}
 		}
-	}
-	IfNotExist %DownLoadPfad%
-	{
-		MsgBox, 262160, Fehler beim Download, Beim Herunterladen ist ein Fehler aufgetreten.`nUrsache koennte sein`, dass Kein Netwerk vorhanden oder dieses Skript nicht mit Ihrer Proxy-Umgebung zurecht kommt.`n`nAbbruch
-		ExitApp
+
+		Clipboard:=DownLoadPfad
+	; 	FileCreateDir,%DownLoadOrdner%			; darf nicht
+		Run %url%
+		Run %A_ScriptDir%
+		MsgBox, 262196, Fehler beim Automatischen Download., Der Download wurde fuer die manuelle Weiterverabeitung gestartet. Dieser ist unter %DownLoadPfad% zu speichern.`n`nErst wenn erledigt (Das heist im soeben geöffneten Explorerfenster zu sehen) Ja klicken!`n`nHinweis: Der DownLoadOrdnerPfad befindet sich  im Clipboard.
+		IfMsgBox,No
+			ExitApp
+		IfNotExist %DownLoadPfad%
+		{
+			loop,%A_ScriptDir%\ZackZackOrdner-master*.zip,FR
+			{
+				if(InStr(A_LoopFileName,"ZackZackOrdner-master") and A_LoopFileExt="zip" and not InStr(A_LoopFileName,"]"))
+				{
+					DownLoadPfad:=A_LoopFileFullPath
+				}
+			}
+		}
+		IfNotExist %DownLoadPfad%
+		{
+			MsgBox, 262160, Fehler beim Download, Beim Herunterladen ist ein Fehler aufgetreten.`nUrsache koennte sein`, dass Kein Netwerk vorhanden oder dieses Skript nicht mit Ihrer Proxy-Umgebung zurecht kommt.`n`nAbbruch
+			ExitApp
+		}
 	}
 }
 IfExist %DownLoadPfad%
@@ -94,4 +98,22 @@ Unz(sZip, sUnz){ ; http://www.autohotkey.com/board/topic/60706-native-zip-and-un
         IfEqual,zippedItems,%unzippedItems%
             break
     }
+}
+
+
+Download_File_XMLHTTP(URL,File_Name:=""){
+	if(File_Name="")
+		SplitPath,URL,File_Name ;get file name from URL
+	req:=ComObjCreate("MSXML2.XMLHTTP.6.0")
+	ado:=ComObjCreate("ADODB.Stream")
+	req.Open("HEAD",URL)
+	req.Send() 
+	ado.Type:=1
+	req.Open("GET",URL,1),req.Send()
+	while(req.ReadyState!=4){
+		Sleep,50
+	}
+	ado.Open(),ado.Write(req.ResponseBody)
+	ado.SaveToFile(File_Name,2)
+	ado.Close()
 }

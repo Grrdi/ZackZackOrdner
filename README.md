@@ -12,7 +12,7 @@ und <br>
 https://autohotkey.com/boards/viewtopic.php?f=10&t=15248<br>
 https://youtu.be/tN214pjN6aA
 
-Installations-Alternative: AktualisiereZackZackOrdner.ahk starten (nicht bei allen Proxy-Umgebungen verfuegbar).
+Installations-Alternative: AktualisiereZackZackOrdner.ahk starten (Proxy-Umgebungen werden seit 12.2018 unterstützt).
 
 Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First-Run of Program)
 

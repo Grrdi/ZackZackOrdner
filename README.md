@@ -66,3 +66,7 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
   erzeugen (Macro in den Uebergabe-Parametern von Standart-LNK-Verknuepfungen) und anschlie&szlig;end auch direkt aufrufen. So laesst sich ZZO bspw. direkt als selbst aktualisierende ClipBoard-Anzeige (auf Wunsch gefiltert) starten. Die Start-LNK-Datei benötigt nur folgende Schritte: <br>1. kopieren von <pre>clip://&#09;In_Row? 
 Ab Version [0.597]  
 OnEvent? OnClipboardChange`tGosub F5`vclip://`vIn_Row? </pre> ins Standart-Suchfeld (das Zeichen rechts von // ist ein Tabulator). <br>2. Hauptmenü | Filter | Aktuelle Live-Suche 2 LinkMacro<br>Ein sinnvoller Filter waere z.B. <pre>clip://&#09;In_Row? Stengel,rauh</pre>Stengel,rauh,... ist eine Liste von potentiellen Rechtschreibfehlern. Anzeige nur bei vorkommen von Falschwoertern (optionaler Warnton mit Anzeige minimiert oder im Hintergrund moeglich).</p>
+<p> Hilfe Dateien:<br>
+Nach entpacken einer .hlp Datei (z.B. mit 7-Zip) in einen Container-Ordner (hier am Beispiel der AHK-Hilfe)
+können die Inhalte aller Hilfedateien nach Suchbegriffen gefiltert werden (alle Hilfedateien gleichzeitig).
+FilP://C:\ProgramData\Zack\WuCont\AhkHelp\*.htm*,DFR In_Inh? SUCHBEGRIFF</p>

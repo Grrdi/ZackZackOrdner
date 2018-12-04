@@ -32,7 +32,7 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
   sie arbeitet ohne Cache (gespeicherte Suchbeschleuniger). Auch mit der Live-Suche 
   kann oben erw&auml;hntes gefunden / gehandelt werden. Dar&uuml;ber hinaus gibt 
   es <b>selektive Dateibetrachter</b>, d.h. von einer Datei werden nur die Inhaltszeilen 
-  gezeigt, die der Suchauffvorderung entsprechen. Dies ist sehr n&uuml;tzlich 
+  gezeigt, die der Suchaufforderung entsprechen. Dies ist sehr n&uuml;tzlich 
   bei <b>Quelltexten</b>, <b>Logfiles</b> oder allgemein bei Text-Dateien/-Inhalten. 
   Die Live-Suche kann aber auch mit einer Sammlung von Dateien umgehen. Z.B. mit 
   den Dateien eines Ordners mit oder ohne Unterverzeichnisse. Hier kann sowohl 

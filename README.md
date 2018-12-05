@@ -37,6 +37,7 @@ Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First
   Die Live-Suche kann aber auch mit einer Sammlung von Dateien umgehen. Z.B. mit 
   den Dateien eines Ordners mit oder ohne Unterverzeichnisse. Hier kann sowohl 
   in den <b>Datei-Pfaden</b> als auch in den <b>Datei-Inhalten</b> gesucht (/gefiltert) werden. 
+  Siehe auch Hilfe-Dateien unten.
 </p>
 <p>Nicht nur Text-Dateien enthalten Text, auch das <b>Clipboard</b>, <b>editierbare-Fenster-Elemente</b> 
   von <b>Fremd-Fenstern</b>, <b>Web-Inhalte</b>. Einige Text anzeigende Fenster 

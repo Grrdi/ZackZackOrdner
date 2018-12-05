@@ -77,4 +77,5 @@ Objekt`nCOM`nfunc (`n verbindet Suchbegriffe mit UND)<br>
 -= (auch in der Standart-Hilfe nicht unterstützte Suchen können funktionieren, solange nichts als spezielles Live-Suche-Zeichen [wie z.B. bei: , `n `v `t] interprätiert wird).<br>
 Kontakte (VCF-Dateien) können wie zuvor behandelt werden, so lassen sich z.B. leicht alle Kontakte mit einer bestimmten Ortsvorwahl filtern.</p>
 <p><pre>OnEvent? OnClipboardChange`tGosub F5`vCoTe://WConDef? Scintilla1,ahk_class SciTEWindow`vNr_Row? %Clipboard%
-OnEvent? OnClipboardChange`tGosub F5`vCoTe://WConDef? Edit1,ahk_class Notepad`vNr_Row? %Clipboard%</pre> zeigt alle Zeilen des momentanen Scintilla-Editors (Notepad-Editors Zeile 2) gefiltert nach dem Clippboard. Eine Variable ins Clipboard genommen, zeigt alle Zeilen welche die Variable enthalten, auch wenn noch nicht gespeichert wurde.</p>
+OnEvent? OnClipboardChange`tGosub F5`vCoTe://WConDef? Edit1,ahk_class Notepad`vNr_Row? %Clipboard%</pre> zeigt alle Zeilen des momentanen Scintilla-Editors (Notepad-Editors Zeile 2) gefiltert nach dem Clippboard. Eine Variable ins Clipboard genommen, zeigt alle Zeilen welche die Variable enthalten, auch wenn noch nicht gespeichert wurde.<br>
+Hinweis: Das Clipboard unterstützt die Zeilenschaltung via `n nicht für eine UND Verknüpfung der Suchbegriffe, aber echte Zeilenschaltungen funktionieren</p>

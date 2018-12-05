@@ -76,4 +76,4 @@ Suchbegriffs-Beispiele:<br>
 Objekt`nCOM`nfunc (`n verbindet Suchbegriffe mit UND)<br>
 -= (auch in der Standart-Hilfe nicht unterstützte Suchen können funktionieren, solange nichts als spezielles Live-Suche-Zeichen [wie z.B. bei: , `n `v `t] interprätiert wird).<br>
 Kontakte (VCF-Dateien) können wie zuvor behandelt werden, so lassen sich z.B. leicht alle Kontakte mit einer bestimmten Ortsvorwahl filtern.</p>
-<p><pre>CoTe://WConDef? Scintilla1,ahk_class SciTEWindow`vNr_Row? %Clipboard%</pre> zeigt alle Zeilen des momentanen Scintilla-Editors gefiltert nach dem Clippboard. Eine Variable ins Clipboard genommen, zeigt alle Zeilen welche die Variable enthalten.</p>
+<p><pre>CoTe://WConDef? Scintilla1,ahk_class SciTEWindow`vNr_Row? %Clipboard%</pre> zeigt alle Zeilen des momentanen Scintilla-Editors gefiltert nach dem Clippboard. Eine Variable ins Clipboard genommen, zeigt alle Zeilen welche die Variable enthalten, auch wenn noch nicht gespeichert wurde.</p>

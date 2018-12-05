@@ -72,5 +72,5 @@ können die Inhalte aller Hilfedateien nach Suchbegriffen gefiltert werden (alle
 <pre>FilP://C:\ProgramData\Zack\WuCont\AhkHelp\*.htm*,DFR In_Inh? SUCHBEGRIFF(E)</pre>
 Suchbegriffs-Beispiele:<br>
 Objekt`nCOM`nfunc (`n verbindet Suchbegriffe mit UND)<br>
--= (auch in der Standart-Hilfe nicht unterstützte Suchen können funktionieren, solange nichts als spezielles Live-Suche-Zeichen interprätiert wird).<br>
+-= (auch in der Standart-Hilfe nicht unterstützte Suchen können funktionieren, solange nichts als spezielles Live-Suche-Zeichen [wie z.B.: , `n `v `t] interprätiert wird).<br>
 Kontakte (VCF-Dateien) können wie zuvor behandelt werden, so lassen sich z.B. leicht alle Kontakte mit einer bestimmten Ortsvorwahl filtern.</p>

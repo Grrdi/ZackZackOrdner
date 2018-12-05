@@ -17,6 +17,7 @@ Installations-Alternative: AktualisiereZackZackOrdner.ahk starten (Proxy-Umgebun
 Install: run AktualisiereZackZackOrdner.ahk (This will: Download; Install; First-Run of Program)
 
 <h2>Was ist, was kann ZackZackOrdner</h2>
+<p>Würde ich dem Programm heute einen Namen geben, würde es eher Powersuche oder Filter-Anzeige lauten.</p>
 <p>ZackZackOrdner ist inzwischen wesentlich mehr als ein sehr <b>schnelles Ordner-Such-Programm</b>. 
   Fast genau so schnell <b>findet</b> man damit <b>Dateien</b>. Eine integrierte 
   <b>Favoriten-Datenbank</b> / Favoriten-Verwaltung unterst&uuml;tzt auch gro&szlig;e 

@@ -70,5 +70,5 @@ OnEvent? OnClipboardChange`tGosub F5`vclip://`vIn_Row? </pre> ins Standart-Suchf
 Nach entpacken einer .hlp Datei (z.B. mit 7-Zip) in einen Container-Ordner (hier am Beispiel der AHK-Hilfe)
 können die Inhalte aller Hilfedateien nach Suchbegriffen gefiltert werden (alle Hilfedateien gleichzeitig).
 <pre>FilP://C:\ProgramData\Zack\WuCont\AhkHelp\*.htm*,DFR In_Inh? SUCHBEGRIFF(E)</pre>
-Suchbegriffs-Beispiel: Objekt`nCOM`nfunc (`n verbindet Suchbegriffe mit UND).
+Suchbegriffs-Beispiele: Objekt`nCOM`nfunc (`n verbindet Suchbegriffe mit UND) -= (auch in der Standart-Hilfe nicht unterstützte Suchen können funktionieren, solange nichts als Live-Suche interprätiert wird).
 Kontakte (VCF-Dateien) können wie zuvor behandelt werden, so lassen sich z.B. leicht alle Kontakte mit einer bestimmten Ortsvorwahl filtern.</p>

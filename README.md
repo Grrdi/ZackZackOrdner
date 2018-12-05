@@ -69,4 +69,5 @@ OnEvent? OnClipboardChange`tGosub F5`vclip://`vIn_Row? </pre> ins Standart-Suchf
 <p> Hilfe Dateien:<br>
 Nach entpacken einer .hlp Datei (z.B. mit 7-Zip) in einen Container-Ordner (hier am Beispiel der AHK-Hilfe)
 können die Inhalte aller Hilfedateien nach Suchbegriffen gefiltert werden (alle Hilfedateien gleichzeitig).
-<pre>FilP://C:\ProgramData\Zack\WuCont\AhkHelp\*.htm*,DFR In_Inh? SUCHBEGRIFF</pre></p>
+<pre>FilP://C:\ProgramData\Zack\WuCont\AhkHelp\*.htm*,DFR In_Inh? SUCHBEGRIFF(E)</pre>
+Suchbegriffs-Beispiel: Objekt`nCOM`nfunc (`n verbindet Suchbegriffe mit UND)</p>
